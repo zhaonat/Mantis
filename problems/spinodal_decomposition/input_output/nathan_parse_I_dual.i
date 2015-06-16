@@ -6,10 +6,8 @@
 [Mesh]
   type = GeneratedMesh
   dim = 2
-  nx = 150
-  ny = 150
-
-  #grid dimensions
+  nx = 100
+  ny = 100
   xmax = 100
   ymax = 100
   elem_type = QUAD4
@@ -33,14 +31,14 @@
   [./cIC]
     type = FunctionIC
     variable = c
-    function = ic_func_2
+    function = ic_func_3
 	
     
   [../]
 []
 
 [Functions]
-  active = 'ic_func ic_func_2 ic_func_3'
+  active = 'ic_func ic_func2 ic_func_3'
   [./ic_func]
     type = ParsedFunction
     value = 'sin(x)+sin(y)'
@@ -49,18 +47,18 @@
   [../] 
   
   #have a second active function to define the ICs
-  [./ic_func_2]
+  [./ic_func2]
     type = PiecewiseConstant
     axis = 1 #function of position (0 -> x, 1->y, 2 -> solve fails to converge (defining a z axis is weird for a 2D problem isn't it?))
     direction = 'left'
-    x = '0 5 10 15 20 25 30 35 40 45 50 55 60 65 70 75 80 85 90 95' # denotes position along horizontal axis where the interfaces will be
-    y = '-1 1 -1 1 -1 1 -1 1 -1 1 -1 1 -1 1 -1 1 -1 1 -1 1' #denotes magnitude of the variable at each of the partitions
+    x = '0 5 10 15 20 25 30 35 40' # denotes position along horizontal axis where the interfaces will be
+    y = '-1 1 -1 1 -1 1 -1 1 -1' #denotes magnitude of the variable at each of the partitions
   [../]
 
   #Piecewise Bilinear attempt 1
   [./ic_func_3]
     type = PiecewiseBilinear
-    data_file = 'BiMatrixIV.csv'
+    data_file = 'BiMatrixVII_even_10_defects.csv'
     #the specifications below correspond axes in data files to those in simulation
     xaxis = 0
     yaxis = 1
@@ -102,13 +100,15 @@
 []
 
 [BCs]
-  #Significant difference between NuemannBC and Dirichlet BCs
-  active = 'bottom top left right'
-
+  active = 'top bottom right left'
   [./bottom]
+    #0 dirichlet boundaries do nothing...
+    #a single nonzero dirichlet boundary condition completely screws up the problem
+
     type = NeumannBC
     variable = c
     boundary = 'bottom'
+    value = 0
     
   [../]
 
@@ -116,36 +116,44 @@
     type = NeumannBC
     variable = c
     boundary = 'top'
-    
+    value = 0
   [../]
 
   [./left]
     type = NeumannBC
     variable = c
     boundary = 'left'
-    
+    value = 0
+
   [../]
 
   [./right]
     type = NeumannBC
     variable = c
     boundary = 'right'
-   
+    value = 0
   [../]
+ 
+  #[./Periodic]
+    #[./all]
+       #auto_direction = 'x y'
+    #[../]
+  #[../]
 []
 
 [Materials]
   [./mat]
     type = PFMobility
     block = 0
-    mob = 0.1
+    mob = 1
     kappa = 1
+    #kappa is the coefficient of (del(c))^2, the penalty term of the cahn_hilliard
   [../]
   [./free_energy]
     type = DerivativeParsedMaterial
     block = 0
     f_name = fbulk
-   args = c
+    args = c
     constant_names = W
     constant_expressions = 1.0/2^2
     function = W*(1-c)^2*(1+c)^2
@@ -187,11 +195,11 @@
   l_tol = 1e-4
   nl_max_its = 20
   nl_rel_tol = 1e-9
-  end_time = 50
+  end_time = 500
 []
 
 [Outputs]
-  file_base = 'out2'
+  file_base = 'mob=1_k=1_multilayer_10_defect_t=500_even_layers'
   output_initial = true
   exodus = true
   print_linear_residuals = true

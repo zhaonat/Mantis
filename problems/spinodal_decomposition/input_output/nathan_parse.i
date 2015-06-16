@@ -58,7 +58,7 @@
   #Piecewise Bilinear attempt 1
   [./ic_func_3]
     type = PiecewiseBilinear
-    data_file = 'BiMatrixIV.csv'
+    data_file = 'BiMatrixIV_even.csv'
     #the specifications below correspond axes in data files to those in simulation
     xaxis = 0
     yaxis = 1
@@ -146,7 +146,7 @@
     type = PFMobility
     block = 0
     mob = 1
-    kappa = 1
+    kappa = 0.1
     #kappa is the coefficient of (del(c))^2, the penalty term of the cahn_hilliard
   [../]
   [./free_energy]
@@ -195,11 +195,11 @@
   l_tol = 1e-4
   nl_max_its = 20
   nl_rel_tol = 1e-9
-  end_time = 1000
+  end_time = 300
 []
 
 [Outputs]
-  file_base = 'out1_long_2'
+  file_base = 'mob=1_k=1_multi_even_layer_1_defect_t=300_kappa = 0.1'
   output_initial = true
   exodus = true
   print_linear_residuals = true

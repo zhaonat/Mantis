@@ -58,7 +58,7 @@
   #Piecewise Bilinear attempt 1
   [./ic_func_3]
     type = PiecewiseBilinear
-    data_file = 'BiMatrixV.csv'
+    data_file = 'BiMatrixVI_even_layers.csv'
     #the specifications below correspond axes in data files to those in simulation
     xaxis = 0
     yaxis = 1
@@ -100,52 +100,27 @@
 []
 
 [BCs]
-  active = 'top bottom right left'
-  [./bottom]
-    #0 dirichlet boundaries do nothing...
-    #a single nonzero dirichlet boundary condition completely screws up the problem
-
-    type = NeumannBC
-    variable = c
-    boundary = 'bottom'
-    value = 0
-    
-  [../]
-
-  [./top]
-    type = NeumannBC
-    variable = c
-    boundary = 'top'
-    value = 0
-  [../]
-
-  [./left]
-    type = NeumannBC
-    variable = c
-    boundary = 'left'
-    value = 0
-
-  [../]
-
-  [./right]
-    type = NeumannBC
-    variable = c
-    boundary = 'right'
-    value = 0
-  [../]
- 
-  #[./Periodic]
-    #[./all]
-       #auto_direction = 'x y'
-    #[../]
+  #active = 'top bottom right left'
+  
+  #[./right]
+    #type = NeumannBC
+    #variable = c
+    #boundary = 'right'
+    #value = 0
   #[../]
+ 
+  [./Periodic]
+    [./all]
+       auto_direction = 'x y'
+    [../]
+  [../]
 []
 
 [Materials]
   [./mat]
     type = PFMobility
     block = 0
-    mob = 1
+    mob = 10
     kappa = 1
     #kappa is the coefficient of (del(c))^2, the penalty term of the cahn_hilliard
   [../]
@@ -195,11 +170,11 @@
   l_tol = 1e-4
   nl_max_its = 20
   nl_rel_tol = 1e-9
-  end_time = 1000
+  end_time = 100
 []
 
 [Outputs]
-  file_base = 'out1_long_II'
+  file_base = 'mob=10_k=1_multilayer_centraldefect_t=100_even_layers_periodic_bcs'
   output_initial = true
   exodus = true
   print_linear_residuals = true
