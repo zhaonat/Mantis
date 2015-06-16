@@ -120,7 +120,7 @@
   [./mat]
     type = PFMobility
     block = 0
-    mob = 10
+    mob = 5
     kappa = 1
     #kappa is the coefficient of (del(c))^2, the penalty term of the cahn_hilliard
   [../]
@@ -170,11 +170,11 @@
   l_tol = 1e-4
   nl_max_its = 20
   nl_rel_tol = 1e-9
-  end_time = 100
+  end_time = 500
 []
 
 [Outputs]
-  file_base = 'mob=10_k=1_multilayer_centraldefect_t=100_even_layers_periodic_bcs'
+  file_base = 'mob=100_k=1_multilayer_centraldefect_t=50_even_layers_periodic_bcs'
   output_initial = true
   exodus = true
   print_linear_residuals = true

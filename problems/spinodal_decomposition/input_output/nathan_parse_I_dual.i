@@ -58,7 +58,7 @@
   #Piecewise Bilinear attempt 1
   [./ic_func_3]
     type = PiecewiseBilinear
-    data_file = 'BiMatrixVII_even_10_defects.csv'
+    data_file = 'BiMatrixVIII_even_layers_2_mirror_image_defects.csv'
     #the specifications below correspond axes in data files to those in simulation
     xaxis = 0
     yaxis = 1
@@ -199,7 +199,7 @@
 []
 
 [Outputs]
-  file_base = 'mob=1_k=1_multilayer_10_defect_t=500_even_layers'
+  file_base = 'mob=5_k=1_mirror_2_defect_t=500_even_layers'
   output_initial = true
   exodus = true
   print_linear_residuals = true
