@@ -13,7 +13,10 @@
 *.aux
 *.toc
 *.snm
+<<<<<<< HEAD
 
+=======
+>>>>>>> 418309cfd80539c0aab8bb73714c57f62d7b3ac7
 *.dylib
 *.so
 *.gitignore*
