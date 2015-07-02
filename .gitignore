@@ -14,9 +14,13 @@
 *.toc
 *.snm
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> 418309cfd80539c0aab8bb73714c57f62d7b3ac7
+=======
+*.csv
+>>>>>>> fa61d8bf36899d3afb83053f5c622a5eb5b11e7c
 *.dylib
 *.so
 *.gitignore*
