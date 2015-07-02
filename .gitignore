@@ -42,7 +42,7 @@ traceout*.txt
 *.msmp
 *.msmp-*
 *.muds
-# Latex garbage
+*.csv
 *.lot
 *.lof
 *.poly
