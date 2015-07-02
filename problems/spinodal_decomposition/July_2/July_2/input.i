@@ -15,7 +15,7 @@
 [Adaptivity]
   marker = errorfrac
   steps = 1
-  max_h_level = 2
+  max_h_level = 4
   initial_steps = 4
 
   [./Indicators]
@@ -52,20 +52,14 @@
 
 [ICs]
   [./cIC]
-    type = MultiBoxIC
+    type = BoundingBoxIC
     variable = c
     x1 = 5
     y1 = 4
-    x2 = 25
+    x2 = 20
     y2 = 8
 
-    x3 = 0
-    y3 = 12
-
-    x4 = 25
-    y4 = 16
     inside = 1
-    inside2 = 1
     outside = -1
 	
     
@@ -94,7 +88,7 @@
     type = PiecewiseConstant
     axis = 1
     direction = 'left'
-    x = '0 12 16'
+    x = '0 4 8'
     y = '-1 1 -1'
 
   [../]
@@ -178,19 +172,19 @@
   [./mat]
     type = PFMobility
     block = 0
-    mob = .1 #mobility is flexibile, jsut keep constant throughout all tests
-    kappa = .01
+    mob = 1 #mobility is flexibile, jsut keep constant throughout all tests
+    kappa = 0.001
     #kappa above is the experimentally agreed upon input value (Dina and Nathan)
     #kappa is the coefficient of (del(c))^2, the penalty term of the cahn_hilliard
   [../]
   [./free_energy]
-    type = ParsedMaterial
+    type = DerivativeParsedMaterial
     block = 0
     f_name = fbulk
     args = c
     constant_names = W
-    constant_expressions = 1.0/3^2
-    function = W*abs((c^2-1))
+    constant_expressions = 1.0/2^2
+    function = W*(1-c)^2*(1+c)^2
     enable_jit = true
     outputs = exodus
   [../]
@@ -231,12 +225,12 @@
   end_time = 15000
   [./TimeStepper]
     type = SolutionTimeAdaptiveDT
-    dt = .05
+    dt = .15
   [../]
 []
 
 [Outputs]
-  file_base = 'discontinuous1stderivative'
+  file_base = 'k=0.001'
   interval = 1 #interval only outputs the results after every n  timesteps
   output_initial = true
   exodus = true

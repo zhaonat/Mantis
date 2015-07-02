@@ -6,8 +6,8 @@
 [Mesh]
   type = GeneratedMesh
   dim = 2
-  nx = 25
-  ny = 25
+  nx = 50
+  ny = 50
   xmax = 50
   ymax = 50
   elem_type = QUAD4
@@ -15,8 +15,8 @@
 [Adaptivity]
   marker = errorfrac
   steps = 1
-  max_h_level = 4
-  initial_steps = 4
+  max_h_level = 2
+  initial_steps = 1
 
   [./Indicators]
     [./error]
@@ -65,10 +65,10 @@
 
   [../]
   [./uIC]
-    type = RandomIC
+    type = FunctionIC
     variable = u
-    max = 1
-    min = -1
+    function = ic_func_3
+
     
   [../]
 []
@@ -237,7 +237,7 @@
 []
 
 [Outputs]
-  file_base = 'DualCHTest'
+  file_base = 'DualCHICs'
   output_initial = true
   exodus = true
   print_linear_residuals = true
