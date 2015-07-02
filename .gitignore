@@ -13,6 +13,7 @@
 *.aux
 *.toc
 *.snm
+*.csv
 *.dylib
 *.so
 *.gitignore*
@@ -42,7 +43,7 @@ traceout*.txt
 *.msmp
 *.msmp-*
 *.muds
-*.csv
+# Latex garbage
 *.lot
 *.lof
 *.poly
