@@ -1,0 +1,45 @@
+[Tests]
+  [./test]
+    type = 'Exodiff'
+    input = 'grain_tracker_same.i'
+    exodiff = 'grain_tracker_same_out.e'
+
+    # integer based maps can shift slightly in parallel
+    max_parallel = 1
+  [../]
+
+  [./test_elemental]
+    type = 'Exodiff'
+    input = 'grain_tracker_test_elemental.i'
+    exodiff = 'grain_tracker_test_elemental_out.e-s002'
+    method = 'OPT OPROF' # slow test
+  [../]
+
+  [./test_elemental_csv]
+    type = 'CSVDiff'
+    input = 'grain_tracker_test_elemental.i'
+    csvdiff = 'grain_volumes.csv'
+    method = 'OPT OPROF' # slow test
+    cli_args = 'Outputs/exodus=false'
+  [../]
+
+  [./test_recover]
+    type = 'Exodiff'
+    input = 'grain_tracker_recover.i'
+    exodiff = 'grain_tracker_recover_out.e
+               grain_tracker_recover_out.e-s002
+               grain_tracker_recover_out.e-s003'
+
+    #Note: this test should be run with min parallel=2
+    #but can diff across architectures in the finite nodal aux fields.
+    # min_parallel = 2
+    skip = '#84'
+  [../]
+
+  [./test_ebsd]
+    type = 'Exodiff'
+    input = 'grain_tracker_ebsd.i'
+    exodiff = 'grain_tracker_ebsd_out.e'
+    skip = 'ReconVarIC not moved yet'
+  [../]
+[]
