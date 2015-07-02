@@ -2,6 +2,9 @@
 #include "Moose.h"
 #include "AppFactory.h"
 #include "ModulesApp.h"
+#include "SecondDerivative.h"
+#include "MultiBoxIC.h"
+#include "PFMobility_function.h"
 
 template<>
 InputParameters validParams<MantisApp>()
@@ -44,6 +47,10 @@ extern "C" void MantisApp__registerObjects(Factory & factory) { MantisApp::regis
 void
 MantisApp::registerObjects(Factory & factory)
 {
+  registerInitialCondition(MultiBoxIC);
+  registerKernel(SecondDerivative);
+  registerMaterial(PFMobility_function);
+  
 }
 
 // External entry point for dynamic syntax association
