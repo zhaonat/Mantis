@@ -191,7 +191,7 @@
     f_name = fbulk
     args = c
     constant_names = W
-    constant_expressions = 1.0/4
+    constant_expressions = 1.0/9
     function = W*(2-c)^2*(2+c)^2
     enable_jit = true
     outputs = exodus

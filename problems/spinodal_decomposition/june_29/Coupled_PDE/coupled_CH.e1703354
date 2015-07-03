@@ -1,0 +1,86 @@
+
+
+[31m
+
+*** ERROR ***
+A 'BoundingIC' is not a registered object.
+
+We loaded objects from the following libraries and still couldn't find your object:
+	(NONE)
+
+
+Make sure you have compiled the library and either set the "library_path" variable in your input file or exported "MOOSE_LIBRARY_PATH".[39m
+
+[2] /home/zhaonat/data3/projects/moose/framework/src/base/Factory.C, line 
+
+[31m
+
+*** ERROR ***
+A 'BoundingIC' is not a registered object.
+
+We loaded objects from the following libraries and still couldn't find your object:
+	(NONE)
+
+
+Make sure you have compiled the library and either set the "library_path" variable in your input file or exported "MOOSE_LIBRARY_PATH".[39m
+
+[4] /home/zhaonat/data3/projects/moose/framework/src/base/Factory.C, line 172, compiled Jul  2 2015 at 17:49:21
+172, compiled Jul  2 2015 at 17:49:21
+
+
+[31m
+
+*** ERROR ***
+A 'BoundingIC' is not a registered object.
+
+We loaded objects from the following libraries and still couldn't find your object:
+	(NONE)
+
+
+Make sure you have compiled the library and either set the "library_path" variable in your input file or exported "MOOSE_LIBRARY_PATH".[39m
+
+[3] /home/zhaonat/data3/projects/moose/framework/src/base/Factory.C, line 
+
+[31m
+
+*** ERROR ***
+A 'BoundingIC' is not a registered object.
+
+We loaded objects from the following libraries and still couldn't find your object:
+	(NONE)
+
+
+Make sure you have compiled the library and either set the "library_path" variable in your input file or exported "MOOSE_LIBRARY_PATH".[39m
+
+172, compiled Jul  2 2015 at 17:49:21
+[0] /home/zhaonat/data3/projects/moose/framework/src/base/Factory.C, line 172, compiled Jul  2 2015 at 17:49:21
+
+
+[31m
+
+*** ERROR ***
+A 'BoundingIC' is not a registered object.
+
+We loaded objects from the following libraries and still couldn't find your object:
+	(NONE)
+
+
+Make sure you have compiled the library and either set the "library_path" variable in your input file or exported "MOOSE_LIBRARY_PATH".[39m
+
+[1] /home/zhaonat/data3/projects/moose/framework/src/base/Factory.C, line 172, compiled Jul  2 2015 at 17:49:21
+--------------------------------------------------------------------------
+MPI_ABORT was invoked on rank 4 in communicator MPI_COMM_WORLD 
+with errorcode 1.
+
+NOTE: invoking MPI_ABORT causes Open MPI to kill all MPI processes.
+You may or may not see output from other processes, depending on
+exactly when Open MPI kills them.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun has exited due to process rank 1 with PID 21339 on
+node compute-0-32.local exiting without calling "finalize". This may
+have caused other processes in the application to be
+terminated by signals sent by mpirun (as reported here).
+--------------------------------------------------------------------------
+[compute-0-32.local:21334] 4 more processes have sent help message help-mpi-api.txt / mpi-abort
+[compute-0-32.local:21334] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages

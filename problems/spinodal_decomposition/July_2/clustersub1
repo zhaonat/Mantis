@@ -3,17 +3,15 @@
 
 #$ -V
 
-#$ -pe orte 12
+#$ -pe orte 4
 
-#$ -q 6core.q
+#$ -q 4core.q
 
-#$ -N 10_layer_defect
+#$ -N test_defect
 
 #$ -m ae
 
 #$ -M nathanz@mit.edu
-
-
 
 
 echo $NSLOTS
@@ -21,6 +19,4 @@ echo $NSLOTS
 echo $TMPDIR
 
 
-
-
-/share/apps/openmpi/bin/mpirun -np $NSLOTS /home/zhaonat/data3/projects/mantis/mantis-opt -i ./CHbubble.i
+/share/apps/openmpi/bin/mpirun -np $NSLOTS /home/zhaonat/data3/projects/Mantis/mantis-opt -i ./input.i

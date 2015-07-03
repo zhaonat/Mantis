@@ -1,0 +1,53 @@
+10
+/tmp/1703362.1.6core.q
+*** Warning, AutoPtr is deprecated and will be removed in a future library version! ./include/libmesh/auto_ptr.h, line 270, compiled Jul  2 2015 at 17:21:35 ***
+Framework Information:
+MOOSE version:           git commit 8edaa8f on 2015-06-30
+PETSc Version:           3.5.2
+Current Time:            Thu Jul  2 23:35:46 2015
+Executable Timestamp:    Thu Jul  2 14:54:57 2015
+
+Parallelism:
+  Num Processors:          10
+  Num Threads:             1
+
+Mesh: 
+  Distribution:            serial
+  Mesh Dimension:          3
+  Spatial Dimension:       3
+  Nodes:                   
+    Total:                 1030301
+    Local:                 107317
+  Elems:                   
+    Total:                 1000000
+    Local:                 100062
+  Num Subdomains:          1
+  Num Partitions:          10
+  Partitioner:             metis
+
+Nonlinear System:
+  Num DOFs:                2060602
+  Num Local DOFs:          214634
+  Variables:               { "c" "w" } 
+  Finite Element Types:    "LAGRANGE" 
+  Approximation Orders:    "FIRST" 
+
+Auxiliary System:
+  Num DOFs:                4000000
+  Num Local DOFs:          400248
+  Variables:               { "local_energy" "error" "errorfrac" "fbulk" } 
+  Finite Element Types:    "MONOMIAL" 
+  Approximation Orders:    "CONSTANT" 
+
+Execution Information:
+  Executioner:             Transient
+  TimeStepper:             SolutionTimeAdaptiveDT
+  Solver Mode:             NEWTON
+
+
+
+Initial adaptivity step 1 of 4
+*** Warning, This code is deprecated, and likely to be removed in future library versions! src/mesh/mesh_refinement.C, line 886, compiled Jul  2 2015 at 17:20:29 ***
+*** Warning, This code is deprecated, and likely to be removed in future library versions! src/mesh/mesh_refinement.C, line 1235, compiled Jul  2 2015 at 17:20:29 ***
+Initial adaptivity step 2 of 4
+Initial adaptivity step 3 of 4
