@@ -66,7 +66,6 @@ traceout*.txt
 *.plugin
 *.outp
 *.patch
-*.txt
 *.bib.bak
 *.out
 *.vtk
