@@ -1,0 +1,3 @@
+Dirichlet BCs do not get rid of the ripening/evaporation effect...
+artificially bubbles the layer as it recedes to the boundary condition, but the coarsening layer still loses material to adjacent layers by ripening, regardless of the boundary conditions
+my impression is that because kappa lengthens the timescale of the simulation, it's not actively preventing the Ostwald ripening from occuring...in fact, as the layers coarsen, it's still happening, but it's just much harder to see.

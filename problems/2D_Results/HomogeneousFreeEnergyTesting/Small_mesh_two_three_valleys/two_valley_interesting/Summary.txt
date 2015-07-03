@@ -1,0 +1,18 @@
+So it seems that the 0 portion of ICs splits perfectly into layers...wonder what happens if you just have a 0 phase alone.
+in the uniform comparison folder, we have an initial perturbation in what starts as a homogeneous background. Kappa is so small, that interfaces can be formed willy nilly
+
+The perfect layer splitting seems to occur both in 10-1IC and PerturbationComparison becuase kappa is so small (kappa = 0.01) so there is literally no cost in forming an interface. However, the system still wants to separate according to the cahn hilliard equation.
+
+Let's calculate the difference between interfacial energy and the height of the double well.
+sigma = sqrt(well_height*kappa)
+well: 1/4
+kappa = 0.01
+sigma = 0.05
+the interfacial energy is four times smaller than the barrier energy...barrier energy forces separation of phases, interfacial energy prevents formation of interfaces
+
+I will run the simulations again with k = 0.25 
+well: 1/4
+k = 0.25
+sigma = 1/4
+interfacial energy and well barrier are similar so they should compete equally...
+In the comparison simulation, which just starts with a uniform dot, we get concentric layers instead of a complex pattern...this represents the simplest possible evolution that can be achieved

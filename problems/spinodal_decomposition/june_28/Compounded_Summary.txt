@@ -1,0 +1,2 @@
+for the 16_layer, the layers are all 6 units thick so kappa = 0.1 coupled with a 0.25 height well gives a thickness of interface pretty close to 0.6 or 1/10 of the layer thickness.
+note that the formula is wavelength = (kappa/(wellheight))

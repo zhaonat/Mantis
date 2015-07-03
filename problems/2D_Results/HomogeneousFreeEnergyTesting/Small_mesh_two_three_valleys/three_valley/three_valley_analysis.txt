@@ -1,0 +1,3 @@
+Unstable IC Analysis:
+even with a kappa value of 0.25, mobility = 1, this demonstrates that the system evolves towards the precise minima of the homogeneous free energy function.
+Unfortunately, because of periodic boundary conditions, there is some weird behavior at the top and bottom but does not detract from the validity of the results.

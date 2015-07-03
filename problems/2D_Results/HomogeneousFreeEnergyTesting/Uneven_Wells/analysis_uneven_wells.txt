@@ -1,0 +1,2 @@
+2D uneven wells...obviously one minima is favored over the other so eventually, a single phase will dominate.
+The first example (shallow barrier) has a very low barrier between the two phases which results in very fast bubbling and also very rapid ostwald ripening...instructive and gives hope that modulating the size of the barrier will have a positive effect

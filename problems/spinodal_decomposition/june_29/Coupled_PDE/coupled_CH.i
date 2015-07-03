@@ -58,17 +58,26 @@
 
 [ICs]
   [./cIC]
-    type = RandomIC
+    type = BoundingBoxIC
     variable = c
-    max = 1
-    min = -1
+    x1 = 4
+    y1 = 4
+    x2 = 30
+    y2 = 8
+    inside = 1
+    outside = 0
 
   [../]
   [./uIC]
-    type = RandomIC
+    type = BoundingBoxIC
     variable = u
-    max = 1
-    min = -1
+    variable = c
+    x1 = 0
+    y1 = 12
+    x2 = 30
+    y2 = 16
+    inside = -1
+    outside = 0
     
   [../]
 []
@@ -164,6 +173,9 @@
     args = 'c u'
     constant_names = W
     constant_expressions = 1.0/2^2
+    #where c = 1 and u = 1, we want a maximum, a place of instability
+    #where c = 1, u =0 or vice versa, a minima, a place of stability
+    #where c= 0 and u = 0, also a maximum though this does not matter as much
     function = W*(1-c)^2*(1+c)^2*(1-u)^2*(1+u)^2
     enable_jit = true
   [../]
