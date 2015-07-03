@@ -3,9 +3,9 @@
 
 #$ -V
 
-#$ -pe orte 5
+#$ -pe orte 3
 
-#$ -q 6core.q
+#$ -q 4core.q
 
 #$ -N LatticeSpherexsim1
 

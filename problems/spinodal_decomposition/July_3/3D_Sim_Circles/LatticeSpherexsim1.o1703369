@@ -1,0 +1,49 @@
+5
+/tmp/1703369.1.6core.q
+*** Warning, AutoPtr is deprecated and will be removed in a future library version! ./include/libmesh/auto_ptr.h, line 270, compiled Jul  2 2015 at 17:21:35 ***
+Framework Information:
+MOOSE version:           git commit 8edaa8f on 2015-06-30
+PETSc Version:           3.5.2
+Current Time:            Fri Jul  3 09:49:15 2015
+Executable Timestamp:    Thu Jul  2 14:54:57 2015
+
+Parallelism:
+  Num Processors:          5
+  Num Threads:             1
+
+Mesh: 
+  Distribution:            serial
+  Mesh Dimension:          3
+  Spatial Dimension:       3
+  Nodes:                   
+    Total:                 1030301
+    Local:                 211853
+  Elems:                   
+    Total:                 1000000
+    Local:                 200000
+  Num Subdomains:          1
+  Num Partitions:          5
+  Partitioner:             metis
+
+Nonlinear System:
+  Num DOFs:                2060602
+  Num Local DOFs:          423706
+  Variables:               { "c" "w" } 
+  Finite Element Types:    "LAGRANGE" 
+  Approximation Orders:    "FIRST" 
+
+Auxiliary System:
+  Num DOFs:                4000000
+  Num Local DOFs:          800000
+  Variables:               { "local_energy" "error" "errorfrac" "fbulk" } 
+  Finite Element Types:    "MONOMIAL" 
+  Approximation Orders:    "CONSTANT" 
+
+Execution Information:
+  Executioner:             Transient
+  TimeStepper:             SolutionTimeAdaptiveDT
+  Solver Mode:             NEWTON
+
+
+
+Initial adaptivity step 1 of 4
