@@ -1,0 +1,22 @@
+#$ -cwd
+#$ -S /bin/sh
+
+#$ -V
+
+#$ -pe orte 36
+
+#$ -q 6core.q
+
+#$ -N 10_layer_3defects_thru
+
+#$ -m ae
+
+#$ -M nathanz@mit.edu
+
+
+echo $NSLOTS
+
+echo $TMPDIR
+
+
+/share/apps/openmpi/bin/mpirun -np $NSLOTS /home/zhaonat/data3/projects/Mantis/mantis-opt -i ./input.i
