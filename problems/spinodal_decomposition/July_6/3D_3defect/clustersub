@@ -19,4 +19,5 @@ echo $NSLOTS
 echo $TMPDIR
 
 
-/share/apps/openmpi/bin/mpirun -np $NSLOTS /home/zhaonat/data3/projects/Mantis/mantis-opt -i ./input.i
+/share/apps/openmpi/bin/mpirun -np $NSLOTS /home/zhaonat/data3/projects/Mantis/mantis-opt -i 
+./input.i
