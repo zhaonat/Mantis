@@ -3,11 +3,11 @@
 
 #$ -V
 
-#$ -pe orte 36
+#$ -pe orte 42
 
 #$ -q 6core.q
 
-#$ -N 10_layer_3defects_thru
+#$ -N ten_layer_3defects_thru
 
 #$ -m ae
 
