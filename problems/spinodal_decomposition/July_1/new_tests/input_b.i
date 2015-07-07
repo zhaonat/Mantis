@@ -15,8 +15,8 @@
 [Adaptivity]
   marker = errorfrac
   steps = 1
-  max_h_level = 4
-  initial_steps = 4
+  max_h_level = 2
+  initial_steps = 2
 
   [./Indicators]
     [./error]
@@ -178,10 +178,8 @@
   [./mat]
     type = PFMobility_function
     block = 0
-    independent_vals = '1 1 1'
-    dependent_vals = '0 3 2'
-    kappa = 0.1
-    mob = 1
+    mobility_gradient = 'c'
+    kappa = 1.0
     #kappa above is the experimentally agreed upon input value (Dina and Nathan)
     #kappa is the coefficient of (del(c))^2, the penalty term of the cahn_hilliard
   [../]

@@ -23,4 +23,4 @@ echo $TMPDIR
 
 
 
-/share/apps/openmpi/bin/mpirun -np $NSLOTS /home/zhaonat/data3/projects/mantis/mantis-opt -i ./coupled_CH.i
+/share/apps/openmpi/bin/mpirun -np $NSLOTS /home/zhaonat/data3/projects/Mantis/mantis-opt -i ./coupled_CH.i

@@ -7,9 +7,9 @@
   type = GeneratedMesh
   dim = 2
   nx = 25
-  ny = 25
-  xmax = 50
-  ymax = 50
+  ny = 30
+  xmax = 30
+  ymax = 20
   elem_type = QUAD4
 []
 [Adaptivity]
@@ -66,16 +66,15 @@
     y2 = 8
     inside = 1
     outside = 0
-
+   
   [../]
   [./uIC]
     type = BoundingBoxIC
     variable = u
-    variable = c
     x1 = 0
-    y1 = 12
+    y1 = 8
     x2 = 30
-    y2 = 16
+    y2 = 12
     inside = -1
     outside = 0
     
@@ -161,7 +160,7 @@
     type = PFMobility
     block = 0
     mob = 1
-    kappa = .25
+    kappa = .0025
     #original kappa is 0.5, kappa denotes coefficient of (del(c))^2, the penalty term for the interface
   [../]
 
@@ -176,14 +175,15 @@
     #where c = 1 and u = 1, we want a maximum, a place of instability
     #where c = 1, u =0 or vice versa, a minima, a place of stability
     #where c= 0 and u = 0, also a maximum though this does not matter as much
-    function = W*(-1*((u)^2+(c)^2)+(u)^4*(c)^4+u^2*c^2)
+    #function = W*(-1*((u)^2+(c)^2)+(u)^4*(c)^4+u^2*c^2)
+    function = W*((u^2-1)^2+(c^2-1)^2)
     enable_jit = true
   [../]
 
 []
 
 [Functions]
-  active = 'ic_func ic_func2 ic_func_3'
+  active = 'ic_func ic_func2'
   [./ic_func]
     type = ParsedFunction
     value = 'sin(x)+sin(y)'
@@ -201,14 +201,15 @@
   [../]
 
   #Piecewise multilinear attempt 1
-  [./ic_func_3]
-    type = PiecewiseBilinear
-    data_file = 'Width=10.csv'
+  #[./ic_func_3]
+    #type = PiecewiseBilinear
+    #data_file = 'Width=10.csv'
     #the specifications below correspond axes in data files to those in simulation
-    xaxis = 0
-    yaxis = 1
+    #xaxis = 0
+    #yaxis = 1
     # scale_factor = 0.5
-  [../]
+  #[../]
+[]
 
 [Postprocessors]
   [./top]
