@@ -4,7 +4,8 @@
 #include "ModulesApp.h"
 #include "SecondDerivative.h"
 #include "MultiBoxIC.h"
-#include "PFMobility_function.h"
+#include "RTI_IC.h"
+#include "RTIangleIC.h"
 
 template<>
 InputParameters validParams<MantisApp>()
@@ -48,8 +49,9 @@ void
 MantisApp::registerObjects(Factory & factory)
 {
   registerInitialCondition(MultiBoxIC);
+  registerInitialCondition(RTI_IC);
   registerKernel(SecondDerivative);
-  registerMaterial(PFMobility_function);
+  registerInitialCondition(RTIangleIC);
   
 }
 
