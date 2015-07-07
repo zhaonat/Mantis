@@ -9,7 +9,8 @@
 
 #include "Material.h"
 #include "LinearInterpolation.h"
-
+#include "Function.h"
+#include "NodalBC.h"
 //Forward Declarations
 class PFMobility_function;
 
@@ -24,14 +25,20 @@ public:
 
 protected:
   virtual void computeProperties();
+  /*virtual Real value(const Point & p);*/
+  Real f();
 
 private:
   MaterialProperty<Real> & _M;
   MaterialProperty<RealGradient> & _grad_M;
-  MaterialProperty<Real> & _kappa_c;
+  
+  Function & _O;
+  VariableGradient & _mobility_gradient;
 
+  MaterialProperty<Real> & _kappa_c;
   Real _kappa;
-  LinearInterpolation _piecewise_func; //replaces mob
+  
+  
  
 };
 

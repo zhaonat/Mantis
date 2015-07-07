@@ -1,0 +1,118 @@
+[33m
+
+*** Warning ***
+Deprecated Object: CoupledImplicitEuler
+This object will be removed on Tue Sep  1 01:00:00 2015
+Replaced CoupledImplicitEuler with CoupledTimeDerivative
+at /home/zhaonat/data3/projects/moose/framework/src/base/Factory.C, line 154[39m
+
+[33m
+
+*** Warning ***
+Deprecated Object: CoupledImplicitEuler
+This object will be removed on Tue Sep  1 01:00:00 2015
+Replaced CoupledImplicitEuler with CoupledTimeDerivative
+at /home/zhaonat/data3/projects/moose/framework/src/base/Factory.C, line 154[39m
+
+[33m
+
+*** Warning ***
+Deprecated Object: CoupledImplicitEuler
+This object will be removed on Tue Sep  1 01:00:00 2015
+Replaced CoupledImplicitEuler with CoupledTimeDerivative
+at /home/zhaonat/data3/projects/moose/framework/src/base/Factory.C, line 154[39m
+
+[33m
+
+*** Warning ***
+Deprecated Object: CoupledImplicitEuler
+This object will be removed on Tue Sep  1 01:00:00 2015
+Replaced CoupledImplicitEuler with CoupledTimeDerivative
+at /home/zhaonat/data3/projects/moose/framework/src/base/Factory.C, line 154[39m
+
+[33m
+
+*** Warning ***
+Deprecated Object: CoupledImplicitEuler
+This object will be removed on Tue Sep  1 01:00:00 2015
+Replaced CoupledImplicitEuler with CoupledTimeDerivative
+at /home/zhaonat/data3/projects/moose/framework/src/base/Factory.C, line 154[39m
+
+[33m
+
+*** Warning ***
+Deprecated Object: CoupledImplicitEuler
+This object will be removed on Tue Sep  1 01:00:00 2015
+Replaced CoupledImplicitEuler with CoupledTimeDerivative
+at /home/zhaonat/data3/projects/moose/framework/src/base/Factory.C, line 154[39m
+
+[33m
+
+*** Warning ***
+Deprecated Object: CoupledImplicitEuler
+This object will be removed on Tue Sep  1 01:00:00 2015
+Replaced CoupledImplicitEuler with CoupledTimeDerivative
+at /home/zhaonat/data3/projects/moose/framework/src/base/Factory.C, line 154[39m
+
+[33m
+
+*** Warning ***
+Deprecated Object: CoupledImplicitEuler
+This object will be removed on Tue Sep  1 01:00:00 2015
+Replaced CoupledImplicitEuler with CoupledTimeDerivative
+at /home/zhaonat/data3/projects/moose/framework/src/base/Factory.C, line 154[39m
+
+[33m
+
+*** Warning ***
+Deprecated Object: CoupledImplicitEuler
+This object will be removed on Tue Sep  1 01:00:00 2015
+Replaced CoupledImplicitEuler with CoupledTimeDerivative
+at /home/zhaonat/data3/projects/moose/framework/src/base/Factory.C, line 154[39m
+
+[33m
+
+*** Warning ***
+Deprecated Object: CoupledImplicitEuler
+This object will be removed on Tue Sep  1 01:00:00 2015
+Replaced CoupledImplicitEuler with CoupledTimeDerivative
+at /home/zhaonat/data3/projects/moose/framework/src/base/Factory.C, line 154[39m
+
+[33m
+
+*** Warning ***
+Deprecated Object: CoupledImplicitEuler
+This object will be removed on Tue Sep  1 01:00:00 2015
+Replaced CoupledImplicitEuler with CoupledTimeDerivative
+at /home/zhaonat/data3/projects/moose/framework/src/base/Factory.C, line 154[39m
+
+[33m
+
+*** Warning ***
+Deprecated Object: CoupledImplicitEuler
+This object will be removed on Tue Sep  1 01:00:00 2015
+Replaced CoupledImplicitEuler with CoupledTimeDerivative
+at /home/zhaonat/data3/projects/moose/framework/src/base/Factory.C, line 154[39m
+
+
+
+[31m
+
+*** ERROR ***
+Solve failed and timestep already at or below dtmin, cannot continue![39m
+
+[0] /home/zhaonat/data3/projects/moose/framework/src/timesteppers/TimeStepper.C, line 219, compiled Jul  1 2015 at 22:38:13
+--------------------------------------------------------------------------
+MPI_ABORT was invoked on rank 0 in communicator MPI_COMM_WORLD 
+with errorcode 1.
+
+NOTE: invoking MPI_ABORT causes Open MPI to kill all MPI processes.
+You may or may not see output from other processes, depending on
+exactly when Open MPI kills them.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun has exited due to process rank 0 with PID 20870 on
+node compute-0-22.local exiting without calling "finalize". This may
+have caused other processes in the application to be
+terminated by signals sent by mpirun (as reported here).
+--------------------------------------------------------------------------

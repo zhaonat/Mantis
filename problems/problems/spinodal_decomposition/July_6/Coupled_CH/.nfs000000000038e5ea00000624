@@ -1,0 +1,11 @@
+#define _USE_MATH_DEFINES
+#include <cmath>
+extern "C" double f_126b44ce77120c338c1fa68457f038ccbd42c734(const double *params, const double *immed, const double eps) {
+double r, s[4];
+s[0] = params[0];
+s[1] = immed[0];
+s[2] = s[0];
+s[2] *= s[2];
+s[1] += s[2];
+s[0] *= s[1];
+return s[0]; }
