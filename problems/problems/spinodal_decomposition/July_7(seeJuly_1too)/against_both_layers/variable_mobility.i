@@ -134,7 +134,7 @@
     block = 0
     f_name = M
     args = c
-    function = 'exp(c^2/.2)'
+    function = 'exp(-c^2/.2)'
     outputs = exodus
     derivative_order = 1
   [../]
@@ -169,7 +169,7 @@
   end_time = 15000 
   [./TimeStepper]
     type = SolutionTimeAdaptiveDT
-    dt = 2
+    dt = .15
   [../]
 []
 
