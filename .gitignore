@@ -13,9 +13,6 @@
 *.aux
 *.toc
 *.snm
-<<<<<<< HEAD
-<<<<<<< HEAD
-
 *.dylib
 *.so
 *.gitignore*
@@ -45,7 +42,6 @@ traceout*.txt
 *.msmp
 *.msmp-*
 *.muds
-*.csv
 *.lot
 *.lof
 *.poly
