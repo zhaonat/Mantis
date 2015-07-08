@@ -50,7 +50,7 @@
   [../]
   [./ic_func_3]
     type = PiecewiseBilinear
-    data_file = 'large_centered.csv'
+    data_file = 'large_centered_two.csv'
     #the specifications below correspond axes in data files to those in simulation
     xaxis = 0
     yaxis = 1
