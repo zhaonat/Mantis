@@ -4,7 +4,7 @@
   nx = 100
   ny = 30
   xmax = 2000
-  ymax = 40
+  ymax = 100
 []
 
 
@@ -50,7 +50,7 @@
   [../]
   [./ic_func_3]
     type = PiecewiseBilinear
-    data_file = 'large_grid.csv'
+    data_file = 'large_centered.csv'
     #the specifications below correspond axes in data files to those in simulation
     xaxis = 0
     yaxis = 1
@@ -76,27 +76,9 @@
 
 [ICs]
   [./c]
-    type = RTI_IC
+    type = FunctionIC
     variable = c
-    x1 = 0
-    y1 = 10
-    z1 = 0
-
-    x2 = 14
-    y2 = 20
-    z2 = 30
-
-    x3 = 16
-    y3 = 10
-    z3 = 0
-    
-    x4 = 30
-    y4 = 20
-    z4 = 30
-
-    inside = 1
-    inside2 = 1
-    outside = -1
+    function = ic_func_3
   [../]
 []
 
@@ -130,7 +112,7 @@
  
   [./Periodic]
     [./all]
-       auto_direction = 'x y z'
+       auto_direction = 'x y'
     [../]
   [../]
 []
@@ -179,10 +161,10 @@
   l_tol = 1.0e-4
   nl_max_its = 50
   nl_rel_tol = 1.0e-10
-  end_time = 15000 
+  end_time = 100000 
   [./TimeStepper]
     type = SolutionTimeAdaptiveDT
-    dt = .15
+    dt = 1
   [../]
 []
 

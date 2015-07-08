@@ -14,8 +14,8 @@
 [Adaptivity]
   marker = errorfrac
   steps = 1
-  max_h_level = 3
-  initial_steps = 2
+  max_h_level = 5
+  initial_steps = 3
 
   [./Indicators]
     [./error]

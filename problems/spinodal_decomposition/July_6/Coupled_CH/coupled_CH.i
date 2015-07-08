@@ -6,8 +6,8 @@
 [Mesh]
   type = GeneratedMesh
   dim = 2
-  nx = 25
-  ny = 30
+  nx = 50
+  ny = 40
   xmax = 30
   ymax = 20
   elem_type = QUAD4
@@ -160,7 +160,7 @@
     type = PFMobility
     block = 0
     mob = 1
-    kappa = .0025
+    kappa = .01
     #original kappa is 0.5, kappa denotes coefficient of (del(c))^2, the penalty term for the interface
   [../]
 
@@ -171,7 +171,7 @@
     f_name = fbulk
     args = 'c u'
     constant_names = W
-    constant_expressions = 1.0/2^2
+    constant_expressions = 1.0/2.5^2
     #where c = 1 and u = 1, we want a maximum, a place of instability
     #where c = 1, u =0 or vice versa, a minima, a place of stability
     #where c= 0 and u = 0, also a maximum though this does not matter as much
@@ -250,7 +250,7 @@
 []
 
 [Outputs]
-  file_base = 'DualCHTest'
+  file_base = 'DualCHTestII'
   output_initial = true
   exodus = true
   print_linear_residuals = true

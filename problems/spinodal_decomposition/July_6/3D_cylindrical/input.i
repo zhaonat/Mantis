@@ -6,13 +6,13 @@
 [Mesh]
   type = GeneratedMesh
   dim = 3
-  nx = 25
-  ny = 25
-  nz = 25
-  xmax = 100
-  ymax = 100
-  zmax = 100
-  elem_type = HEX
+  nx = 50
+  ny = 50
+  nz = 50
+  xmax = 30
+  ymax = 30
+  zmax = 30
+  elem_type = HEX8
 []
 [Adaptivity]
   marker = errorfrac
@@ -83,7 +83,7 @@
   #Piecewise Bilinear attempt 1
   [./ic_func_3]
     type = PiecewiseMultilinear
-    data_file = '3D_test_cylinder.txt'
+    data_file = '3D_small_cylinder.txt'
     #the specifications below correspond axes in data files to those in simulation
     xaxis = 0
     yaxis = 1
@@ -150,7 +150,7 @@
     type = PFMobility
     block = 0
     mob = 1 #mobility is flexibile, jsut keep constant throughout all tests
-    kappa = 0.1
+    kappa = 0.05
     #kappa above is the experimentally agreed upon input value (Dina and Nathan)
     #kappa is the coefficient of (del(c))^2, the penalty term of the cahn_hilliard
   [../]
@@ -192,22 +192,22 @@
   type = Transient
   scheme = bdf2
   #dt = timestep
-  solve_type = NEWTON
+  solve_type = PJFNK
   petsc_options_iname = '-pc_type -ksp_grmres_restart -sub_ksp_type -sub_pc_type -pc_asm_overlap'
   petsc_options_value = 'asm         31   preonly   lu      1'
   l_max_its = 30
   l_tol = 1e-4
   nl_max_its = 20
   nl_rel_tol = 1e-9
-  end_time = 1500
+  end_time = 15000
   [./TimeStepper]
     type = SolutionTimeAdaptiveDT
-    dt = .5
+    dt = 1
   [../]
 []
 
 [Outputs]
-  file_base = 'cylinder_defect_thru'
+  file_base = 'cylinder_defect_thruII'
   interval = 1 #interval only outputs the results after every n  timesteps
   output_initial = true
   exodus = true

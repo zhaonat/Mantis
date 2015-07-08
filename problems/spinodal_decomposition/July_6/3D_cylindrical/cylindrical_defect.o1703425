@@ -1,0 +1,156 @@
+42
+/tmp/1703425.1.6core.q
+*** Warning, AutoPtr is deprecated and will be removed in a future library version! ./include/libmesh/auto_ptr.h, line 270, compiled Jul  2 2015 at 17:21:35 ***
+Framework Information:
+MOOSE version:           git commit 8edaa8f on 2015-06-30
+PETSc Version:           3.5.2
+Current Time:            Mon Jul  6 23:24:25 2015
+Executable Timestamp:    Thu Jul  2 14:54:57 2015
+
+Parallelism:
+  Num Processors:          42
+  Num Threads:             1
+
+Mesh: 
+  Distribution:            serial
+  Mesh Dimension:          3
+  Spatial Dimension:       3
+  Nodes:                   
+    Total:                 46656
+    Local:                 1393
+  Elems:                   
+    Total:                 42875
+    Local:                 1022
+  Num Subdomains:          1
+  Num Partitions:          42
+  Partitioner:             metis
+
+Nonlinear System:
+  Num DOFs:                93312
+  Num Local DOFs:          2786
+  Variables:               { "c" "w" } 
+  Finite Element Types:    "LAGRANGE" 
+  Approximation Orders:    "FIRST" 
+
+Auxiliary System:
+  Num DOFs:                300125
+  Num Local DOFs:          7154
+  Variables:               { "local_energy" "error" "errorfrac" "d^2fbulk/dc^2" "d^3fbulk/dc^3" "dfbulk/dc" 
+                             "fbulk" } 
+  Finite Element Types:    "MONOMIAL" 
+  Approximation Orders:    "CONSTANT" 
+
+Execution Information:
+  Executioner:             Transient
+  TimeStepper:             SolutionTimeAdaptiveDT
+  Solver Mode:             NEWTON
+
+
+
+Initial adaptivity step 1 of 2
+*** Warning, This code is deprecated, and likely to be removed in future library versions! src/mesh/mesh_refinement.C, line 886, compiled Jul  2 2015 at 17:20:29 ***
+*** Warning, This code is deprecated, and likely to be removed in future library versions! src/mesh/mesh_refinement.C, line 1235, compiled Jul  2 2015 at 17:20:29 ***
+Initial adaptivity step 2 of 2
+
+Time Step  0, time = 0
+                dt = 0
+
+Postprocessor Values:
++----------------+----------------+-------------------+
+| time           | top            | total_free_energy |
++----------------+----------------+-------------------+
+|   0.000000e+00 |   0.000000e+00 |      0.000000e+00 |
++----------------+----------------+-------------------+
+
+
+Time Step  1, time = 0.15
+                dt = 0.15
+ 0 Nonlinear |R| = [32m1.076086e+02[39m
+      0 Linear |R| = [32m1.076086e+02[39m
+      1 Linear |R| = [32m1.227742e+00[39m
+      2 Linear |R| = [32m4.123376e-02[39m
+      3 Linear |R| = [32m2.145572e-03[39m
+ 1 Nonlinear |R| = [32m9.522631e+00[39m
+      0 Linear |R| = [32m9.522631e+00[39m
+      1 Linear |R| = [32m5.143918e+00[39m
+      2 Linear |R| = [32m1.501206e-01[39m
+      3 Linear |R| = [32m3.625403e-03[39m
+      4 Linear |R| = [32m1.525372e-04[39m
+ 2 Nonlinear |R| = [32m1.210336e+00[39m
+      0 Linear |R| = [32m1.210336e+00[39m
+      1 Linear |R| = [32m7.309626e-01[39m
+      2 Linear |R| = [32m2.488142e-02[39m
+      3 Linear |R| = [32m9.048263e-04[39m
+      4 Linear |R| = [32m4.948407e-05[39m
+ 3 Nonlinear |R| = [32m1.783581e-02[39m
+      0 Linear |R| = [32m1.783581e-02[39m
+      1 Linear |R| = [32m3.832011e-03[39m
+      2 Linear |R| = [32m1.013115e-04[39m
+      3 Linear |R| = [32m5.066823e-06[39m
+      4 Linear |R| = [32m2.101251e-07[39m
+ 4 Nonlinear |R| = [32m3.686843e-06[39m
+      0 Linear |R| = [32m3.686843e-06[39m
+      1 Linear |R| = [32m6.458950e-07[39m
+      2 Linear |R| = [32m1.827617e-08[39m
+      3 Linear |R| = [32m1.278866e-09[39m
+      4 Linear |R| = [32m4.314285e-11[39m
+ 5 Nonlinear |R| = [32m4.317184e-11[39m
+[32m Solve Converged![39m
+
+Postprocessor Values:
++----------------+----------------+-------------------+
+| time           | top            | total_free_energy |
++----------------+----------------+-------------------+
+|   0.000000e+00 |   0.000000e+00 |      0.000000e+00 |
+|   1.500000e-01 |   3.122450e+01 |      1.271896e+03 |
++----------------+----------------+-------------------+
+
+Adaptivity step 1 of 1
+
+Time Step  2, time = 0.315
+                dt = 0.165
+ 0 Nonlinear |R| = [32m2.212178e+01[39m
+      0 Linear |R| = [32m2.212178e+01[39m
+      1 Linear |R| = [32m2.925804e+00[39m
+      2 Linear |R| = [32m7.008561e-01[39m
+      3 Linear |R| = [32m5.111280e-02[39m
+      4 Linear |R| = [32m4.080746e-03[39m
+      5 Linear |R| = [32m2.536054e-04[39m
+ 1 Nonlinear |R| = [32m7.401321e-01[39m
+      0 Linear |R| = [32m7.401321e-01[39m
+      1 Linear |R| = [32m4.107923e-01[39m
+      2 Linear |R| = [32m3.598591e-02[39m
+      3 Linear |R| = [32m6.702469e-03[39m
+      4 Linear |R| = [32m1.723239e-04[39m
+      5 Linear |R| = [32m1.516331e-05[39m
+ 2 Nonlinear |R| = [32m1.416565e-02[39m
+      0 Linear |R| = [32m1.416565e-02[39m
+      1 Linear |R| = [32m5.965714e-03[39m
+      2 Linear |R| = [32m6.777844e-04[39m
+      3 Linear |R| = [32m1.151308e-04[39m
+      4 Linear |R| = [32m2.866026e-06[39m
+      5 Linear |R| = [32m2.519774e-07[39m
+ 3 Nonlinear |R| = [32m9.035017e-06[39m
+      0 Linear |R| = [32m9.035017e-06[39m
+      1 Linear |R| = [32m3.547517e-06[39m
+      2 Linear |R| = [32m4.453068e-07[39m
+      3 Linear |R| = [32m6.708549e-08[39m
+      4 Linear |R| = [32m1.815748e-09[39m
+      5 Linear |R| = [32m1.578733e-10[39m
+ 4 Nonlinear |R| = [32m1.578707e-10[39m
+[32m Solve Converged![39m
+
+Postprocessor Values:
++----------------+----------------+-------------------+
+| time           | top            | total_free_energy |
++----------------+----------------+-------------------+
+|   0.000000e+00 |   0.000000e+00 |      0.000000e+00 |
+|   1.500000e-01 |   3.122450e+01 |      1.271896e+03 |
+|   3.150000e-01 |   2.636489e+01 |      1.215574e+03 |
++----------------+----------------+-------------------+
+
+Adaptivity step 1 of 1
+
+Time Step  3, time = 0.4965
+                dt = 0.1815
+ 0 Nonlinear |R| = [32m2.441258e+01[39m

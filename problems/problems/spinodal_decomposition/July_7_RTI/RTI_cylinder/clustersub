@@ -3,7 +3,7 @@
 
 #$ -V
 
-#$ -pe orte 42
+#$ -pe orte 24
 
 #$ -q 6core.q
 

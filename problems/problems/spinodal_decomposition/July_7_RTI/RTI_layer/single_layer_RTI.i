@@ -15,8 +15,8 @@
   marker = errorfrac
   steps = 1
   #increase the bottom two values in cluster sims!!!!
-  max_h_level = 1
-  initial_steps = 1
+  max_h_level = 4
+  initial_steps = 2
 
   [./Indicators]
     [./error]
@@ -171,9 +171,9 @@
   petsc_options_value = 'asm         31      lu      1'
 
   l_max_its = 30
-  l_tol = 1.0e-4
+  l_tol = 1.0e-3
   nl_max_its = 50
-  nl_rel_tol = 1.0e-10
+  nl_rel_tol = 1.0e-9
   end_time = 15000 
   [./TimeStepper]
     type = SolutionTimeAdaptiveDT
@@ -182,7 +182,7 @@
 []
 
 [Outputs]
-  file_base = 'RTI_single'
+  file_base = 'RTI_single_layer'
   csv = 1
   exodus = true
   print_linear_residuals = true

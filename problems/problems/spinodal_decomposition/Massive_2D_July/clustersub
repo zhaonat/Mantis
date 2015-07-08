@@ -3,11 +3,11 @@
 
 #$ -V
 
-#$ -pe orte 42
+#$ -pe orte 12
 
 #$ -q 6core.q
 
-#$ -N RTI_layer
+#$ -N massive_stabilized_layer
 
 #$ -m ae
 
@@ -19,5 +19,4 @@ echo $NSLOTS
 echo $TMPDIR
 
 
-/share/apps/openmpi/bin/mpirun -np $NSLOTS /home/zhaonat/data3/projects/Mantis/mantis-opt -i 
-./large_grid.i
+/share/apps/openmpi/bin/mpirun -np $NSLOTS /home/zhaonat/data3/projects/Mantis/mantis-opt -i large_grid.i
