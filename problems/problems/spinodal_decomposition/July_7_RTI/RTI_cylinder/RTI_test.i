@@ -118,6 +118,7 @@
   [../]
 []
 
+#New CHParsed and CHinterface will take the mobility parameter as a derivative parsed material
 [Materials]
   [./kappa]
     type = GenericConstantMaterial
@@ -130,7 +131,7 @@
     block = 0
     f_name = M
     args = c
-    function = '2'
+    function = 'exp(-c^2/0.1)'
     outputs = exodus
     derivative_order = 1
   [../]

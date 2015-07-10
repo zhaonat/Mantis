@@ -1,41 +1,15 @@
 [Mesh]
   type = GeneratedMesh
-  dim = 3
-  nx = 20
-  ny = 20
-  nz = 15
-  xmax = 30
-  ymax = 30
-  zmax = 30
-  elem_type = HEX8
+  dim = 2
+  nx = 100
+  ny = 100
+  xmax = 20
+  ymax = 20
+  elem_type = QUAD4
 []
 
-
-[Adaptivity]
-  marker = errorfrac
-  steps = 1
-  #increase the bottom two values in cluster sims!!!!
-  max_h_level = 2
-  initial_steps = 2
-
-  [./Indicators]
-    [./error]
-      type = GradientJumpIndicator
-      variable = c
-    [../]
-  [../]
-
-  [./Markers]
-    [./errorfrac]
-      type = ErrorFractionMarker
-      refine = 0.5
-      coarsen = 0.1
-      indicator = error
-    [../]
-  [../]
-[]
 [Functions]
-  active = 'ic_func ic_func2 ic_func_4'
+  active = 'ic_func ic_func2'
   [./ic_func]
     type = ParsedFunction
     value = 'sin(x)+sin(y)'
@@ -48,18 +22,19 @@
     type = PiecewiseConstant
     axis = 1 #function of position (0 -> x, 1->y, 2 -> solve fails to converge (defining a z axis is weird for a 2D problem isn't it?))
     direction = 'left'
-    x = '0 4 8 12 16' # denotes position along horizontal axis where the interfaces will be
-    y = '-1 1 -1 1 -1' #denotes magnitude of the variable at each of the partitions
+    x = '0 5 10 15 20 25 30 35 40' # denotes position along horizontal axis where the interfaces will be
+    y = '-1 1 -1 1 -1 1 -1 1 -1' #denotes magnitude of the variable at each of the partitions
   [../]
 
-  [./ic_func_4]
-    type = PiecewiseConstant
-    axis = 1
-    direction = 'left'
-    x = '0 12 16'
-    y = '-1 1 -1'
-
-  [../]
+  #Piecewise Bilinear attempt 1
+  #[./ic_func_3]
+    #type = PiecewiseBilinear
+    #data_file = '40x40.csv'
+    #the specifications below correspond axes in data files to those in simulation
+    #xaxis = 0
+    #yaxis = 1
+    # scale_factor = 0.2    
+  #[../]
   
 []
 [Variables]
@@ -67,31 +42,23 @@
   [../]
   [./w]
   [../]
+
+  [./disp_x]
+  [../]
+  [./disp_y]
+  [../]
+  [./disp_z]
+  [../]
+
 []
 
 [ICs]
-  [./c]
-    type = RTI_IC
+  [./c_IC]
+    type = RandomIC
     variable = c
-    x1 = 0
-    y1 = 10
-    z1 = 0
-
-    x2 = 14
-    y2 = 20
-    z2 = 30
-
-    x3 = 16
-    y3 = 10
-    z3 = 0
-    
-    x4 = 30
-    y4 = 20
-    z4 = 30
-
-    inside = 1
-    inside2 = 1
-    outside = -1
+    max = 1
+    min = -1
+	
   [../]
 []
 
@@ -101,7 +68,7 @@
     variable = c
     kappa_name = kappa_c
     w = w
-    f_name = F
+    f_name = T
   [../]
   [./wres]
     type = SplitCHWRes
@@ -114,18 +81,18 @@
     variable = w
     v = c
   [../]
+
+  [./TensorMechanics]
+    disp_z = disp_z
+    disp_y = disp_y
+    disp_x = disp_x
+  [../]
 []
 
 [BCs]
-   #active = 'right left top bottom'
-   #0 dirichlet boundaries do nothing...
-   #a single nonzero dirichlet boundary condition completely screws up the problem
-
-
- 
   [./Periodic]
     [./all]
-       auto_direction = 'x y z'
+      auto_direction = 'x y'
     [../]
   [../]
 []
@@ -135,14 +102,14 @@
     type = GenericConstantMaterial
     block = 0
     prop_names = 'kappa_c'
-    prop_values = '.1'
+    prop_values = '0.01'
   [../]
   [./mob]
     type = DerivativeParsedMaterial
     block = 0
     f_name = M
     args = c
-    function = 'exp(-c^2/0.2)'
+    function = '1'
     outputs = exodus
     derivative_order = 1
   [../]
@@ -152,6 +119,43 @@
     f_name = F
     c = c
   [../]
+
+  [./elasticenergy]
+    type = ElasticEnergyMaterial
+    block = 0
+    args = 'c'
+    f_name = A
+  [../]
+  
+
+  [./stress]
+    type = ComputeLinearElasticStress
+    block = 0
+  [../]
+  [./strain]
+    type = ComputeSmallStrain
+    block = 0
+    disp_z = disp_z
+    disp_y = disp_y
+    disp_x = disp_x
+  [../]
+  [./elastic]
+    type = FiniteStrainElasticMaterial
+    block = 0
+    disp_x = disp_x
+    disp_y = disp_y
+    disp_z = disp_z
+    C_ijkl = '1.684e2 1.214e3 1.214e3 1.684e1 1.214e5 1.684e5 0.754e5 0.754e5 0.754e5'
+    fill_method = symmetric9
+  [../]
+  [./totalfree_energy]
+     type = DerivativeSumMaterial
+     block = 0
+     f_name = T
+     sum_materials = 'F A'
+     args = 'c'
+  [../]
+
 []
 
 [Preconditioning]
@@ -172,17 +176,17 @@
 
   l_max_its = 30
   l_tol = 1.0e-3
-  nl_max_its = 50
+  nl_max_its = 30
   nl_rel_tol = 1.0e-9
-  end_time = 15000 
+  end_time = 50000 
   [./TimeStepper]
     type = SolutionTimeAdaptiveDT
-    dt = .15
+    dt = .1
   [../]
 []
 
 [Outputs]
-  file_base = 'RTI_single_layer'
+  file_base = 'solidmechactual'
   csv = 1
   exodus = true
   print_linear_residuals = true

@@ -101,7 +101,7 @@
     variable = c
     kappa_name = kappa_c
     w = w
-    f_name = F
+    f_name = T
   [../]
   [./wres]
     type = SplitCHWRes
@@ -115,7 +115,7 @@
     v = c
   [../]
 
-  [./TensorMechanics]
+    [./TensorMechanics]
     disp_z = disp_z
     disp_y = disp_y
     disp_x = disp_x

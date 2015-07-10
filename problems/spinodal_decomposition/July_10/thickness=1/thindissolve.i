@@ -1,13 +1,10 @@
 [Mesh]
   type = GeneratedMesh
-  dim = 3
+  dim = 2
   nx = 20
   ny = 20
-  nz = 15
   xmax = 30
   ymax = 30
-  zmax = 30
-  elem_type = HEX8
 []
 
 
@@ -74,21 +71,16 @@
     type = RTI_IC
     variable = c
     x1 = 0
-    y1 = 10
-    z1 = 0
+    y1 = 19
 
-    x2 = 14
+    x2 = 30
     y2 = 20
-    z2 = 30
 
-    x3 = 16
-    y3 = 10
-    z3 = 0
-    
+    x3 = 0
+    y3 = 19
+
     x4 = 30
     y4 = 20
-    z4 = 30
-
     inside = 1
     inside2 = 1
     outside = -1
@@ -125,7 +117,7 @@
  
   [./Periodic]
     [./all]
-       auto_direction = 'x y z'
+       auto_direction = 'x y'
     [../]
   [../]
 []
@@ -135,14 +127,14 @@
     type = GenericConstantMaterial
     block = 0
     prop_names = 'kappa_c'
-    prop_values = '.1'
+    prop_values = '0.1'
   [../]
   [./mob]
     type = DerivativeParsedMaterial
     block = 0
     f_name = M
     args = c
-    function = 'exp(-c^2/0.2)'
+    function = 'exp(-c^2/0.1)'
     outputs = exodus
     derivative_order = 1
   [../]
@@ -174,7 +166,7 @@
   l_tol = 1.0e-3
   nl_max_its = 50
   nl_rel_tol = 1.0e-9
-  end_time = 15000 
+  end_time = 700000 
   [./TimeStepper]
     type = SolutionTimeAdaptiveDT
     dt = .15
@@ -182,7 +174,7 @@
 []
 
 [Outputs]
-  file_base = 'RTI_single_layer'
+  file_base = 'thin_dissolve'
   csv = 1
   exodus = true
   print_linear_residuals = true
