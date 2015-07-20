@@ -73,12 +73,11 @@ protected:
   Real _inside;
   Real _inside2;
   Real _outside;
-  Real _numthickness;
-  int _numlayer;
+  Real _numlayer;
   Point _bottom_left;
   Point _top_right;
   
   
 };
 
-#endif 
+#endif /*LAYERIC*/

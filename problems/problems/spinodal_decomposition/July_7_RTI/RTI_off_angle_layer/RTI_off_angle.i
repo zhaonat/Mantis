@@ -1,39 +1,16 @@
 [Mesh]
   type = GeneratedMesh
   dim = 3
-  nx = 25
+  nx = 60
   ny = 25
   nz = 15
-  xmax = 30
+  xmax = 90
   ymax = 30
   zmax = 30
   elem_type = HEX8
 []
 
 
-[Adaptivity]
-  marker = errorfrac
-  steps = 1
-  #increase the bottom two values in cluster sims!!!!
-  max_h_level = 1
-  initial_steps = 1
-
-  [./Indicators]
-    [./error]
-      type = GradientJumpIndicator
-      variable = c
-    [../]
-  [../]
-
-  [./Markers]
-    [./errorfrac]
-      type = ErrorFractionMarker
-      refine = 0.5
-      coarsen = 0.1
-      indicator = error
-    [../]
-  [../]
-[]
 [Functions]
   active = 'ic_func ic_func2 ic_func_4'
   [./ic_func]
@@ -48,15 +25,15 @@
     type = PiecewiseConstant
     axis = 1 #function of position (0 -> x, 1->y, 2 -> solve fails to converge (defining a z axis is weird for a 2D problem isn't it?))
     direction = 'left'
-    x = '0 4 8 12 16' # denotes position along horizontal axis where the interfaces will be
-    y = '-1 1 -1 1 -1' #denotes magnitude of the variable at each of the partitions
+    x = '0 10 20' # denotes position along horizontal axis where the interfaces will be
+    y = '-1 1 -1' #denotes magnitude of the variable at each of the partitions
   [../]
 
   [./ic_func_4]
     type = PiecewiseConstant
     axis = 1
-    direction = 'left'
-    x = '0 12 16'
+    direction = 'right'
+    x = '0 5 25'
     y = '-1 1 -1'
 
   [../]
@@ -77,16 +54,16 @@
     y1 = 10
     z1 = 0
 
-    x2 = 14
+    x2 = 44.5
     y2 = 20
-    z2 = 30
+    z2 = 10
 
-    x3 = 16
-    y3 = 5
+    x3 = 45
+    y3 = 0
     z3 = 10
     
-    x4 = 30
-    y4 = 25
+    x4 = 90
+    y4 = 30
     z4 = 20
 
     inside = 1
@@ -117,15 +94,25 @@
 []
 
 [BCs]
-   #active = 'right left top bottom'
+   active = 'right left'
    #0 dirichlet boundaries do nothing...
    #a single nonzero dirichlet boundary condition completely screws up the problem
 
-
- 
+  [./right]
+      type = FunctionDirichletBC
+      function = ic_func2
+      boundary = left
+      variable = c
+  [../]
+  [./left]
+      type = FunctionDirichletBC
+      function = ic_func_4
+      variable = c
+      boundary = right
+  [../]
   [./Periodic]
     [./all]
-       auto_direction = 'x y z'
+       auto_direction = 'y z'
     [../]
   [../]
 []
@@ -182,7 +169,7 @@
 []
 
 [Outputs]
-  file_base = 'RTI_off_angle'
+  file_base = 'RTI_off_angle_testing'
   csv = 1
   exodus = true
   print_linear_residuals = true

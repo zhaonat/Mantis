@@ -6,6 +6,11 @@
 #include "MultiBoxIC.h"
 #include "RTI_IC.h"
 #include "RTIangleIC.h"
+#include "LayerIC.h"
+#include "LayerGrooveIC.h"
+#include "LayerSingleDefectIC.h"
+#include "ExpFunction.h"
+
 template<>
 InputParameters validParams<MantisApp>()
 {
@@ -51,6 +56,10 @@ MantisApp::registerObjects(Factory & factory)
   registerInitialCondition(RTI_IC);
   registerKernel(SecondDerivative);
   registerInitialCondition(RTIangleIC);
+  registerInitialCondition(LayerIC);
+  registerInitialCondition(LayerGrooveIC);
+  registerInitialCondition(LayerSingleDefectIC);
+  registerPostprocessor(ExpFunction);
 }
 
 // External entry point for dynamic syntax association

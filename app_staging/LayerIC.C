@@ -60,22 +60,20 @@ LayerIC::LayerIC(const std::string & name, InputParameters parameters) :
   _inside(getParam<Real>("inside")),
   _inside2(getParam<Real>("inside2")),
   _outside(getParam<Real>("outside")),
-  _numthickness(getParam<Real>("thickness")),
-  _numlayer(getParam<int>("layernum")),
+  _numlayer(getParam<Real>("numlayer")),
   _bottom_left(_x1,_y1,_z1),
   _top_right(_x2,_y2,_z2)
 
   
-{
-}
+{}
 
 Real
 LayerIC::value(const Point & p)
 {
-  int j;
-  for (unsigned int i=0; i<LIBMESH_DIM; i++)
-  	for (j = 0; j < 3; j++)
-            if(p(1) > _bottom_left(1)+ j * 2 * _numthickness && p(1) < _top_right(1)+j * 2 * _numthickness)
+  unsigned int j;
+  for (unsigned int i=0; i<LIBMESH_DIM; ++i)
+  	for (j = 0; j < _numlayer; ++j)
+            /*if(p(1) > _bottom_left(1)+ j * 2 * _thickness && p(1) < _top_right(1)+j * 2 * _thickness) */
    		return _inside;
   return _outside;
   

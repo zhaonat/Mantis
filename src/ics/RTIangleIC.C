@@ -77,8 +77,7 @@ RTIangleIC::value(const Point & p)
     /*parallel part of layer*/
     else if (p(1) > _top_right(1) && p(0) < _top_right(0))
       return _outside;
-    else if (p(1) < _bottom_left(1)&& p(0) < _top_right(0))
-      return _outside;
+
     
     /*off angle part*/
     else if (p(0) > _bottom_left_a(0) && (p(i) < _bottom_left_a(i) || p(i) > _top_right_a(i)))
