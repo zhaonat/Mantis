@@ -44,7 +44,7 @@
     variable = c
     
     #x1 is the location of the defect!
-    x1 = 10
+    x1 = 3
     y1 = 2
     z1 = 0
     
@@ -58,8 +58,8 @@
     numlayer = 6
     thickness = 5
     zthick = 30
-    defecthick = 5
-    defectloc = 5
+    defectthick = 20
+    defectloc = 1
     defectzthick = 5
     defectzloc = 15
 

@@ -83,7 +83,7 @@ LayerSingleDefectIC::value(const Point & p)
   double j = _thickness + _spacing;
   double side_one = _x1;
   double side_two = _x1 + _defect_thick;
-  if ( (p(1) > _bottom_left(1) + (_defectloc) * (j)) && ( p(1) <= _bottom_left(1) + _defectloc * (j) + _thickness  ) && p(0) >= _bottom_left(0) && p(0) <= (_bottom_left(0) + 5) && ( _defect_z_loc < p(2) && p(2) < _defect_z_loc + _defect_zthick))
+  if ( (p(1) > _bottom_left(1) + (_defectloc) * (j)) && ( p(1) <= _bottom_left(1) + _defectloc * (j) + _thickness  ) && p(0) >= _bottom_left(0) && p(0) <= (_bottom_left(0) + _defect_thick) && ( _defect_z_loc < p(2) && p(2) < _defect_z_loc + _defect_zthick))
   {
       return _outside;
   }
