@@ -10,6 +10,7 @@
 #include "LayerGrooveIC.h"
 #include "LayerSingleDefectIC.h"
 #include "LayerTwoDefectIC.h"
+#include "WeldIC.h"
 #include "ExpFunction.h"
 
 template<>
@@ -62,6 +63,7 @@ MantisApp::registerObjects(Factory & factory)
   registerInitialCondition(LayerSingleDefectIC);
   registerPostprocessor(ExpFunction);
   registerInitialCondition(LayerTwoDefectIC);
+  registerInitialCondition(WeldIC);
 }
 
 // External entry point for dynamic syntax association
