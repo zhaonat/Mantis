@@ -2,7 +2,7 @@
   type = GeneratedMesh
   dim = 2
   nx = 75
-  ny = 30
+  ny = 40
   xmax = 150
   ymax = 40
   elem_type = QUAD4
@@ -74,89 +74,6 @@
     function = ic_func_3
   [../]
 []
-
-[Kernels]
-  [./cres]
-    type = SplitCHParsed
-    variable = c
-    kappa_name = kappa_c
-    w = w
-    f_name = F
-  [../]
-  [./wres]
-    type = SplitCHWRes
-    variable = w
-    mob_name = M
-    args = c
-  [../]
-  [./time]
-    type = CoupledImplicitEuler
-    variable = w
-    v = c
-  [../]
-
-[]
-
-[BCs]
-   [./top]
-    type = NeumannBC
-    variable = c
-    boundary = 'top'
-    value = 0
-  [../]
-
-  [./bottom]
-    type = NeumannBC
-    variable = c
-    boundary = 'bottom'
-    value = 0
-  [../]
-  [./left]
-    type = NeumannBC
-    variable = c
-    boundary = 'right'
-    value = 0
-  [../]
-  [./right]
-    type = NeumannBC
-    variable = c
-    boundary = 'left'
-    value = 0
-  [../]
-
-[]
-
-[Materials]
-  [./kappa]
-    type = GenericConstantMaterial
-    block = 0
-    prop_names = 'kappa_c'
-    prop_values = '.158114'
-  [../]
-  [./mob]
-    type = DerivativeParsedMaterial
-    block = 0
-    f_name = M
-    args = c
-    function = '10*exp(-c^2/0.1)'
-    outputs = exodus
-    derivative_order = 1
-  [../]
-
-  [./free_energy]
-    type = DerivativeParsedMaterial
-    block = 0
-    f_name = F
-    args = c
-    constant_names = W
-    constant_expressions = 0.158114
-    #df*k = 0.025 (this is the constant that the interfacial energy must be)
-    function = W*(1-c)^2*(1+c)^2
-    enable_jit = true
-    outputs = exodus
-  [../]
-[]
-
 
 [AuxVariables]
   [./local_energy]
@@ -266,6 +183,88 @@
 
   
 []
+[Kernels]
+  [./cres]
+    type = SplitCHParsed
+    variable = c
+    kappa_name = kappa_c
+    w = w
+    f_name = F
+  [../]
+  [./wres]
+    type = SplitCHWRes
+    variable = w
+    mob_name = M
+    args = c
+  [../]
+  [./time]
+    type = CoupledImplicitEuler
+    variable = w
+    v = c
+  [../]
+
+[]
+
+[BCs]
+   [./top]
+    type = NeumannBC
+    variable = c
+    boundary = 'top'
+    value = 0
+  [../]
+
+  [./bottom]
+    type = NeumannBC
+    variable = c
+    boundary = 'bottom'
+    value = 0
+  [../]
+  [./left]
+    type = NeumannBC
+    variable = c
+    boundary = 'right'
+    value = 0
+  [../]
+  [./right]
+    type = NeumannBC
+    variable = c
+    boundary = 'left'
+    value = 0
+  [../]
+
+[]
+
+[Materials]
+  [./kappa]
+    type = GenericConstantMaterial
+    block = 0
+    prop_names = 'kappa_c'
+    prop_values = '0.158114'
+  [../]
+  [./mob]
+    type = DerivativeParsedMaterial
+    block = 0
+    f_name = M
+    args = c
+    function = '10*exp(-c^2/0.1)'
+    outputs = exodus
+    derivative_order = 1
+  [../]
+
+  [./free_energy]
+    type = DerivativeParsedMaterial
+    block = 0
+    f_name = F
+    args = c
+    constant_names = W
+    constant_expressions = '0.158114'
+    function = W*(1-c)^2*(1+c)^2
+    enable_jit = true
+    outputs = exodus
+  [../]
+[]
+
+[]
 
 [Preconditioning]
   [./SMP]
@@ -287,7 +286,7 @@
   l_tol = 1.0e-3
   nl_max_its = 30
   nl_rel_tol = 1.0e-9
-  end_time = 15000 
+  end_time = 10000 
   [./TimeStepper]
     type = SolutionTimeAdaptiveDT
     dt = .1
@@ -295,7 +294,7 @@
 []
 
 [Outputs]
-  file_base = 'lambdafactor=2'
+  file_base = 'thickness=1.0'
   interval = 10
   exodus = true
   print_linear_residuals = true

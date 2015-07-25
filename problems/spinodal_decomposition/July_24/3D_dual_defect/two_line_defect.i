@@ -40,7 +40,7 @@
 
 [ICs]
   [./c_IC]
-    type = LayerSingleDefectIC
+    type = LayerTwoDefectIC
     variable = c
     
     #x1 is the location of the defect!
@@ -62,9 +62,9 @@
     defectloc = 9
     defectloc2 = 0
     defectzthick = 50
-    defectzthick2 = 5
+    defectzthick2 = 50
     defectzloc = 0
-    defectzloc2 = 23 
+    defectzloc2 = 0 
 
   [../]
 []
@@ -166,8 +166,8 @@
 []
 
 [Outputs]
-  file_base = '3D_two_defect'
-  interval = 20
+  file_base = 'TEST'
+  interval = 1
   exodus = true
   print_linear_residuals = true
   print_perf_log = true

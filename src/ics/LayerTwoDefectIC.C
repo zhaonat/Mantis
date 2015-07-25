@@ -95,19 +95,16 @@ LayerTwoDefectIC::value(const Point & p)
   double side_one2 = _x2;
   double side_two2 = _x2 + _defect_thick;
 
-if ( (p(1) > _bottom_left(1) + (_defectloc2) * (j)) && ( p(1) <= _bottom_left(1) + _defectloc2 * (j) + _thickness  ) && p(0) >= _bottom_left(0) && p(0) <= (_bottom_left(0) + _defect_thick) && ( _defect_z_loc < p(2) && p(2) < _defect_z_loc + _defect_zthick)  || (  (p(1) > _bottom_left(1) + (_defectloc) * (j)) && ( p(1) <= _bottom_left(1) + _defectloc * (j) + _thickness  ) && p(0) >= _bottom_left(0) && p(0) <= (_bottom_left(0) + _defect_thick) && ( _defect_z_loc < p(2) && p(2) < _defect_z_loc + _defect_zthick)  ) )
+if ( ((p(1) > _bottom_left(1) + (_defectloc2) * (j)) && ( p(1) <= _bottom_left(1) + _defectloc2 * (j) + _thickness  ) && p(0) >= _bottom_left(0) && p(0) <= (_bottom_left(0) + _defect_thick) && ( _defect_z_loc2 < p(2) && p(2) < _defect_z_loc2 + _defect_zthick2))  )
   {
-      return _outside;
+          return _outside;
   }
 
-else if (p(1) > _numlayer*_thickness)
-{
-if ( (p(1) > _bottom_left(1) + (_defectloc) * (j)) && ( p(1) <= _bottom_left(1) + _defectloc * (j) + _thickness  ) && p(0) >= _bottom_left(0) && p(0) <= (_bottom_left(0) + _defect_thick) && ( _defect_z_loc < p(2) && p(2) < _defect_z_loc + _defect_zthick) )
-  {
-      return _outside;
-  }
-}
 
+else if ( ((p(1) > _top_right(1) + (_defectloc) * (j)) && ( p(1) <= _top_right(1) + _defectloc * (j) + _thickness  ) && p(0) >= _top_right(0) && p(0) <= (_top_right(0) + _defect_thick) && ( _defect_z_loc < p(2) && p(2) < _defect_z_loc + _defect_zthick))  )
+ {
+          return _inside;
+ }
 
 
 for (j = 0; j < _numlayer; j++)

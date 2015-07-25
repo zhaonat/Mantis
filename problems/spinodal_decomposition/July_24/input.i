@@ -1,3 +1,8 @@
+#
+# Example problem showing how to use the DerivativeParsedMaterial with SplitCHParsed.
+# The free energy is identical to that from SplitCHMath, f_bulk = 1/4*(1-c)^2*(1+c)^2 (lev landau).
+#
+
 [Mesh]
   type = GeneratedMesh
   dim = 3
@@ -7,14 +12,13 @@
   xmax = 40
   ymax = 40
   zmax = 40
-  elem_type = HEX27
+  elem_type = HEX8
 []
-
 [Adaptivity]
   marker = errorfrac
   steps = 1
-  max_h_level = 1
-  initial_steps = 1
+  max_h_level = 3
+  initial_steps = 2
 
   [./Indicators]
     [./error]
@@ -34,7 +38,6 @@
 
 
 []
-
 [Variables]
   [./c]
   [../]
@@ -42,107 +45,20 @@
   [../]
 []
 
+[AuxVariables]
+  [./local_energy]
+    order = CONSTANT
+    family = MONOMIAL
+  [../]
+[]
+
 [ICs]
-  [./c_IC]
+  [./cIC]
     type = FunctionIC
+    variable = c
     function = ic_func_3
-    variable = c
-  [../]
-[]
-
-[Kernels]
-  [./cres]
-    type = SplitCHParsed
-    variable = c
-    kappa_name = kappa_c
-    w = w
-    f_name = F
-  [../]
-  [./wres]
-    type = SplitCHWRes
-    variable = w
-    mob_name = M
-    args = c
-  [../]
-  [./time]
-    type = CoupledImplicitEuler
-    variable = w
-    v = c
-  [../]
-[]
-
-[BCs]
-  active = 'top bottom'
-
-  [./top]
-    type = NeumannBC
-    variable = c
-    boundary = 'top'
-    value = 0 
-  [../]
-
-  [./bottom]
-    type = NeumannBC
-    variable = c
-    boundary = 'bottom'
-    value = 0
-  [../]
-
-  [./Periodic]
-    [./all]
-      auto_direction = 'x z'
-    [../]
-  [../]
-[]
-
-[Materials]
-  [./kappa]
-    type = GenericConstantMaterial
-    block = 0
-    prop_names = 'kappa_c'
-    prop_values = '.1'
-  [../]
-  [./mob]
-    type = DerivativeParsedMaterial
-    block = 0
-    f_name = M
-    args = c
-    function = '25*exp(-c^2/0.1)'
-    outputs = exodus
-    derivative_order = 1
-  [../]
-  [./free_energy]
-    type = MathEBFreeEnergy
-    block = 0
-    f_name = F
-    c = c
-  [../]
-[]
-
-[Preconditioning]
-  [./SMP]
-   type = SMP
-   off_diag_row = 'w c'
-   off_diag_column = 'c w'
-  [../]
-[]
-
-[Executioner]
-  type = Transient
-  scheme = 'BDF2'
-
-  solve_type = PJFNK
-  petsc_options_iname = '-pc_type -ksp_grmres_restart -sub_ksp_type -sub_pc_type -pc_asm_overlap'
-  petsc_options_value = 'asm         31   preonly   lu      1'
-
-  l_max_its = 30
-  l_tol = 1.0e-3
-  nl_max_its = 50
-  nl_rel_tol = 1.0e-9
-  end_time = 5000
-  [./TimeStepper]
-    type = SolutionTimeAdaptiveDT
-    dt = .15
+	
+    
   [../]
 []
 
@@ -163,21 +79,139 @@
     x = '0 5 10 15 20 25 30 35 40' # denotes position along horizontal axis where the interfaces will be
     y = '-1 1 -1 1 -1 1 -1 1 -1' #denotes magnitude of the variable at each of the partitions
   [../]
-  
+
   #Piecewise Bilinear attempt 1
   [./ic_func_3]
     type = PiecewiseMultilinear
     data_file = 'diagonal3D.txt'
+    #the specifications below correspond axes in data files to those in simulation
     xaxis = 0
     yaxis = 1
+    # scale_factor = 0.5
+    
+  [../]
+  
+[]
+
+[Kernels]
+  [./c_dot]
+    type = CoupledImplicitEuler
+    variable = w
+    v = c
+  [../]
+  [./c_res]
+    type = SplitCHParsed
+    variable = c
+    f_name = fbulk
+    kappa_name = kappa_c
+    w = w
+  [../]
+  [./w_res]
+    type = SplitCHWRes
+    variable = w
+    mob_name = M
+  [../]
+[]
+
+[AuxKernels]
+  [./local_energy]
+    type = TotalFreeEnergy
+    variable = local_energy
+    f_name = fbulk
+    interfacial_vars = c
+    kappa_names = kappa_c
+    execute_on = timestep_end
+  [../]
+[]
+
+
+[BCs]
+   #active = 'top bottom right left'
+   #0 dirichlet boundaries do nothing...
+   #a single nonzero dirichlet boundary condition completely screws up the problem
+
+
+  #[./bottom]
+    #type = NeumannBC
+    #variable = c
+    #boundary = 'bottom'
+    #value = 0
+  #[../]
+ 
+  [./Periodic]
+    [./all]
+       auto_direction = 'x y z'
+    [../]
+  [../]
+[]
+
+[Materials]
+  [./mat]
+    type = PFMobility
+    block = 0
+    mob = 1 #mobility is flexibile, jsut keep constant throughout all tests
+    kappa = 0.1
+    #kappa above is the experimentally agreed upon input value (Dina and Nathan)
+    #kappa is the coefficient of (del(c))^2, the penalty term of the cahn_hilliard
+  [../]
+  [./free_energy]
+    type = DerivativeParsedMaterial
+    block = 0
+    f_name = fbulk
+    args = c
+    constant_names = W
+    constant_expressions = 1.0/2^2
+    function = W*(1-c)^2*(1+c)^2
+    enable_jit = true
+    outputs = exodus
+  [../]
+[]
+
+[Postprocessors]
+  [./top]
+    type = SideIntegralVariablePostprocessor
+    variable = c
+    boundary = top
+  [../]
+  [./total_free_energy]
+    type = ElementIntegralVariablePostprocessor
+    variable = local_energy
+  [../]
+[]
+
+[Preconditioning]
+  [./cw_coupling]
+    type = SMP
+    full = true
+  [../]
+[]
+
+[Executioner]
+  # petsc_options_iname = '-pc_type -pc_hypre_type -ksp_gmres_restart'
+  # petsc_options_value = 'hypre boomeramg 31'
+  type = Transient
+  scheme = bdf2
+  #dt = timestep
+  solve_type = PJFNK
+  petsc_options_iname = '-pc_type -ksp_grmres_restart -sub_ksp_type -sub_pc_type -pc_asm_overlap'
+  petsc_options_value = 'asm         31   preonly   lu      1'
+  l_max_its = 30
+  l_tol = 1e-4
+  nl_max_its = 20
+  nl_rel_tol = 1e-9
+  end_time = 15000
+  [./TimeStepper]
+    type = SolutionTimeAdaptiveDT
+    dt = 1
   [../]
 []
 
 [Outputs]
-  file_base = '3D_diagonals'
-  interval = 20
+  file_base = 'TEST'
+  interval = 1 #interval only outputs the results after every n  timesteps
+  output_initial = true
   exodus = true
   print_linear_residuals = true
   print_perf_log = true
-  output_initial = true
 []
+
