@@ -1,9 +1,0 @@
-Basically, there are two ways to go about this, multiply the total function by a single constant...or we can induce a local change in the steepness...In the former case,
-it will likely make the system ultra stable, and if the system does not want to change, then the solve will fail to converge. In more than one sense, this is equivelant to modifying the kappa parameter while holding the well-height constant. One major issue is that because the system is absolutely at minima by the time we specify our boundary conditions, only the energy gradient term will contribute to the system changing at any point.
-
-Solve already fails if W = = 1
-well-height (delta f) = 1
-kappa = 0.25
-
-interfacial energy = sqrt(0.25*1) = 1/2
-the barrier height is only twice as great yet the system is already so stable that the solve fails to converge.

@@ -1,4 +1,0 @@
-This experiment is done on the mac computer...
-Appears to be a tendency for the system to overpressurize rather than increase the amount of surface area. 
-WE will note that geometrically though, the thinner a rectangle you have,
-the better it is in terms of surface area reduction, to have the rectangle transform into a circle.
