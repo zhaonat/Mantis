@@ -109,11 +109,11 @@ for (j = 0; j < _numlayer; j++)
 
 }  
   
-else if ((( p(0) < _numlayer*_thickness ))) 
+else if ((( p(0) <= _numlayer*_thickness ))) 
 {
   for (int i = -50; i < 50; i++)
     {
-         if (p(1) > _slope * p(2) + _angle_spacing*i && p(1) < _slope * p(2) + _angle_spacing*i + _angle_spacing-1 )
+         if (p(1) > _slope * p(2) + (_angle_spacing+1)*i && p(1) < _slope * p(2) + (_angle_spacing+1)*i + _angle_spacing-1 )
                 {return _inside; }
     
     }

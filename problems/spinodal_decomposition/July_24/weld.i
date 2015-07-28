@@ -2,8 +2,8 @@
   type = GeneratedMesh
   dim = 3
   nx = 50
-  ny = 80
-  nz = 65
+  ny = 100
+  nz = 100
   xmax = 50
   ymax = 40
   zmax = 50
@@ -66,8 +66,8 @@
     defectzloc = 0
     defectzloc2 = 0 
 
-    anglespace = 4
-    slope = 4
+    anglespace = 3
+    slope = 0.05
 
   [../]
 []

@@ -1,4 +1,0 @@
-All discontinuity tests on MOOSE seem to suggest that a discontinuous derivative simply leads to the result of phase remixing...
-not good.
-We will attempt to solve this identical problem using the Cahn-Hilliard in Mathematica.
-

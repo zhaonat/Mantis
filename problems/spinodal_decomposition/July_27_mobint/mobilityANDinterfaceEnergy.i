@@ -1,12 +1,13 @@
 [Mesh]
   type = GeneratedMesh
   dim = 2
-  nx = 30
-  ny = 14
-  xmax = 30
-  ymax = 14
+  nx = 40
+  ny = 120
+  xmax = 150
+  ymax = 40
   elem_type = QUAD4
 []
+
 [Adaptivity]
   marker = errorfrac
   steps = 1
@@ -31,7 +32,33 @@
 
 
 []
+[Functions]
+  active = 'ic_func ic_func2 ic_func_3'
+  [./ic_func]
+    type = ParsedFunction
+    value = 'sin(x)+sin(y)'
+    vars = 'c'
+    vals = '1'
+  [../] 
+  
+  #have a second active function to define the ICs
+  [./ic_func2]
+    type = PiecewiseConstant
+    axis = 1 #function of position (0 -> x, 1->y, 2 -> solve fails to converge (defining a z axis is weird for a 2D problem isn't it?))
+    direction = 'left'
+    x = '0 5 10 15 20 25 30 35 40' # denotes position along horizontal axis where the interfaces will be
+    y = '-1 1 -1 1 -1 1 -1 1 -1' #denotes magnitude of the variable at each of the partitions
+  [../]
 
+  [./ic_func_3]
+    type = PiecewiseBilinear
+    data_file = '40x150.csv'
+   
+    xaxis = 0
+    yaxis = 1    
+  [../]
+  
+[]
 [Variables]
   [./c]
   [../]
@@ -41,19 +68,10 @@
 []
 
 [ICs]
-  [./cIC]
-    type = BoundingBoxIC
+  [./c_IC]
+    type = FunctionIC
     variable = c
-    x1 = 5
-    y1 = 5
-    x2 = 30
-    y2 = 9
-
-    inside = 1
-    inside2 = 1
-    outside = -1
-	
-    
+    function = ic_func_3
   [../]
 []
 
@@ -113,7 +131,7 @@
     type = GenericConstantMaterial
     block = 0
     prop_names = 'kappa_c'
-    prop_values = '0.05'
+    prop_values = '100'
   [../]
   [./mob]
     type = DerivativeParsedMaterial
@@ -124,19 +142,19 @@
     outputs = exodus
     derivative_order = 1
   [../]
+
   [./free_energy]
     type = DerivativeParsedMaterial
     block = 0
     f_name = F
     args = c
     constant_names = W
-    constant_expressions = 0.5
+    constant_expressions = 250
+    #df*k = 0.025 (this is the constant that the interfacial energy must be)
     function = W*(1-c)^2*(1+c)^2
     enable_jit = true
     outputs = exodus
   [../]
-
-
 []
 
 
@@ -269,7 +287,7 @@
   l_tol = 1.0e-3
   nl_max_its = 30
   nl_rel_tol = 1.0e-9
-  end_time =  10000
+  end_time = 20 
   [./TimeStepper]
     type = SolutionTimeAdaptiveDT
     dt = .1
@@ -277,9 +295,10 @@
 []
 
 [Outputs]
-  file_base = 'thickness=0.31'
-  interval = 5
+  file_base = 'mobility_interfaceE_increased'
+  interval = 1
   exodus = true
+  csv = true
   print_linear_residuals = true
   print_perf_log = true
   output_initial = true

@@ -1,15 +1,18 @@
 [Mesh]
   type = GeneratedMesh
   dim = 2
-  nx = 30
-  ny = 14
-  xmax = 30
-  ymax = 14
+  nx = 60
+  ny = 30
+  xmax = 150
+  ymax = 40
   elem_type = QUAD4
 []
+
+
 [Adaptivity]
   marker = errorfrac
   steps = 1
+  #increase the bottom two values in cluster sims!!!!
   max_h_level = 2
   initial_steps = 2
 
@@ -28,32 +31,67 @@
       indicator = error
     [../]
   [../]
-
-
 []
+[Functions]
+  active = 'ic_func ic_func2 ic_func_3 ic_func_4'
+  [./ic_func]
+    type = ParsedFunction
+    value = 'sin(x)+sin(y)'
+    vars = 'c'
+    vals = '1'
+  [../] 
+  
+  #have a second active function to define the ICs
+  [./ic_func2]
+    type = PiecewiseConstant
+    axis = 1 #function of position (0 -> x, 1->y, 2 -> solve fails to converge (defining a z axis is weird for a 2D problem isn't it?))
+    direction = 'left'
+    x = '0 4 8 12 16' # denotes position along horizontal axis where the interfaces will be
+    y = '-1 1 -1 1 -1' #denotes magnitude of the variable at each of the partitions
+  [../]
+  [./ic_func_3]
+    type = PiecewiseBilinear
+    data_file = '40x150.csv'
+   
+    xaxis = 0
+    yaxis = 1    
+  [../]
+  [./ic_func_4]
+    type = PiecewiseConstant
+    axis = 1
+    direction = 'left'
+    x = '0 12 16'
+    y = '-1 1 -1'
 
+  [../]
+  
+[]
 [Variables]
   [./c]
   [../]
   [./w]
   [../]
-
 []
+[AuxVariables]
+  [./local_energy]
+    order = CONSTANT
+    family = MONOMIAL
+  [../]
+  [./mobility_var]
+    order = CONSTANT
+    family = MONOMIAL
+  [../]
 
+  [./grad_energy]
+    order = CONSTANT
+    family = MONOMIAL
+  [../]
+[]
 [ICs]
-  [./cIC]
-    type = BoundingBoxIC
+  [./c]
+    type = FunctionIC
     variable = c
-    x1 = 5
-    y1 = 5
-    x2 = 30
-    y2 = 9
-
-    inside = 1
-    inside2 = 1
-    outside = -1
-	
-    
+    function = ic_func_3
   [../]
 []
 
@@ -76,10 +114,30 @@
     variable = w
     v = c
   [../]
+[]
+[AuxKernels]
+  [./local_energy]
+    type = TotalFreeEnergy
+    variable = local_energy
+    f_name = F
+    interfacial_vars = c
+    kappa_names = kappa_c
+    execute_on = timestep_end
+  [../]
+
+  [./CrossGradEnergy]
+    type = CrossTermGradientFreeEnergy
+    kappa_names = kappa_c
+    variable = grad_energy
+    interfacial_vars = c
+  [../]
 
 []
 
 [BCs]
+   #active = 'right left top bottom'
+   #0 dirichlet boundaries do nothing...
+   #a single nonzero dirichlet boundary condition completely screws up the problem
    [./top]
     type = NeumannBC
     variable = c
@@ -106,6 +164,7 @@
     value = 0
   [../]
 
+
 []
 
 [Materials]
@@ -113,66 +172,52 @@
     type = GenericConstantMaterial
     block = 0
     prop_names = 'kappa_c'
-    prop_values = '0.05'
+    prop_values = '0.1'
   [../]
   [./mob]
     type = DerivativeParsedMaterial
     block = 0
     f_name = M
     args = c
-    function = '100*exp(-c^2/0.1)'
+    function = 'exp(-c^2/0.1)'
     outputs = exodus
     derivative_order = 1
   [../]
   [./free_energy]
-    type = DerivativeParsedMaterial
+    type = MathEBFreeEnergy
     block = 0
     f_name = F
-    args = c
-    constant_names = W
-    constant_expressions = 0.5
-    function = W*(1-c)^2*(1+c)^2
-    enable_jit = true
-    outputs = exodus
-  [../]
-
-
-[]
-
-
-[AuxVariables]
-  [./local_energy]
-    order = CONSTANT
-    family = MONOMIAL
-  [../]
-  [./mobility_var]
-    order = CONSTANT
-    family = MONOMIAL
-  [../]
-
-  [./grad_energy]
-    order = CONSTANT
-    family = MONOMIAL
+    c = c
   [../]
 []
-[AuxKernels]
-  [./local_energy]
-    type = TotalFreeEnergy
-    variable = local_energy
-    f_name = F
-    interfacial_vars = c
-    kappa_names = kappa_c
-    execute_on = timestep_end
-  [../]
 
-  [./CrossGradEnergy]
-    type = CrossTermGradientFreeEnergy
-    kappa_names = kappa_c
-    variable = grad_energy
-    interfacial_vars = c
+[Preconditioning]
+  [./SMP]
+   type = SMP
+   off_diag_row = 'w c'
+   off_diag_column = 'c w'
   [../]
-
 []
+
+[Executioner]
+  type = Transient
+  scheme = 'BDF2'
+
+  solve_type = 'NEWTON'
+  petsc_options_iname = '-pc_type -ksp_grmres_restart -sub_pc_type -pc_asm_overlap'
+  petsc_options_value = 'asm         31      lu      1'
+
+  l_max_its = 30
+  l_tol = 1.0e-3
+  nl_max_its = 50
+  nl_rel_tol = 1.0e-9
+  end_time = 700000 
+  [./TimeStepper]
+    type = SolutionTimeAdaptiveDT
+    dt = .15
+  [../]
+[]
+
 [Postprocessors]
   
   #what is this? I think it's a measurement of c at the top boundary of the system
@@ -249,36 +294,9 @@
   
 []
 
-[Preconditioning]
-  [./SMP]
-   type = SMP
-   off_diag_row = 'w c'
-   off_diag_column = 'c w'
-  [../]
-[]
-
-[Executioner]
-  type = Transient
-  scheme = 'BDF2'
-
-  solve_type = 'NEWTON'
-  petsc_options_iname = '-pc_type -ksp_grmres_restart -sub_pc_type -pc_asm_overlap'
-  petsc_options_value = 'asm         31      lu      1'
-
-  l_max_its = 30
-  l_tol = 1.0e-3
-  nl_max_its = 30
-  nl_rel_tol = 1.0e-9
-  end_time =  10000
-  [./TimeStepper]
-    type = SolutionTimeAdaptiveDT
-    dt = .1
-  [../]
-[]
-
 [Outputs]
-  file_base = 'thickness=0.31'
-  interval = 5
+  file_base = 'interfaceenergy_long_track'
+  csv = true
   exodus = true
   print_linear_residuals = true
   print_perf_log = true

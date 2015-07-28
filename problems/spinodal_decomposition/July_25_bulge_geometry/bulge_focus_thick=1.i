@@ -113,7 +113,7 @@
     type = GenericConstantMaterial
     block = 0
     prop_names = 'kappa_c'
-    prop_values = '0.05'
+    prop_values = '0.158114'
   [../]
   [./mob]
     type = DerivativeParsedMaterial
@@ -130,7 +130,7 @@
     f_name = F
     args = c
     constant_names = W
-    constant_expressions = 0.5
+    constant_expressions = 0.158114
     function = W*(1-c)^2*(1+c)^2
     enable_jit = true
     outputs = exodus
@@ -277,7 +277,7 @@
 []
 
 [Outputs]
-  file_base = 'thickness=0.31'
+  file_base = 'thickness=1'
   interval = 5
   exodus = true
   print_linear_residuals = true
