@@ -22,8 +22,8 @@ InputParameters validParams<KKSSplitCHCRes>()
   return params;
 }
 
-KKSSplitCHCRes::KKSSplitCHCRes(const std::string & name, InputParameters parameters) :
-    DerivativeMaterialInterface<SplitCHBase>(name, parameters),
+KKSSplitCHCRes::KKSSplitCHCRes(const InputParameters & parameters) :
+    DerivativeMaterialInterface<SplitCHBase>(parameters),
     // number of coupled variables (ca, args_a[])
     _nvar(_coupled_moose_vars.size()),
     _Fa_name(getParam<std::string>("fa_name")),

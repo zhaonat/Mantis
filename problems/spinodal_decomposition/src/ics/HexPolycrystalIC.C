@@ -24,9 +24,8 @@ InputParameters validParams<HexPolycrystalIC>()
   return params;
 }
 
-HexPolycrystalIC::HexPolycrystalIC(const std::string & name,
-                                   InputParameters parameters) :
-    PolycrystalReducedIC(name, parameters),
+HexPolycrystalIC::HexPolycrystalIC(const InputParameters & parameters) :
+    PolycrystalReducedIC(parameters),
     _x_offset(getParam<Real>("x_offset")),
     _perturbation_percent(getParam<Real>("perturbation_percent"))
 {

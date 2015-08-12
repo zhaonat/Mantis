@@ -17,9 +17,8 @@ InputParameters validParams<SwitchingFunctionMaterial>()
   return params;
 }
 
-SwitchingFunctionMaterial::SwitchingFunctionMaterial(const std::string & name,
-                                                     InputParameters parameters) :
-    OrderParameterFunctionMaterial(name, parameters),
+SwitchingFunctionMaterial::SwitchingFunctionMaterial(const InputParameters & parameters) :
+    OrderParameterFunctionMaterial(parameters),
     _h_order(getParam<MooseEnum>("h_order"))
 {
 }

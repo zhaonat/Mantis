@@ -21,7 +21,7 @@ InputParameters validParams<TotalFreeEnergyBase>();
 class TotalFreeEnergyBase : public AuxKernel
 {
 public:
-  TotalFreeEnergyBase(const std::string & name, InputParameters parameters);
+  TotalFreeEnergyBase(const InputParameters & parameters);
 
 protected:
   virtual Real computeValue() = 0;

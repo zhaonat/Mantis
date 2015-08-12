@@ -20,9 +20,8 @@ InputParameters validParams<PFFracBulkRate>()
   return params;
 }
 
-PFFracBulkRate::PFFracBulkRate(const std::string & name,
-                               InputParameters parameters):
-  KernelValue(name,parameters),
+PFFracBulkRate::PFFracBulkRate(const InputParameters & parameters):
+  KernelValue(parameters),
   _gc_prop(getMaterialProperty<Real>("gc_prop")),
   _G0_pos(getMaterialProperty<Real>("G0_pos")),
   _dG0_pos_dstrain(getMaterialProperty<RankTwoTensor>("dG0_pos_dstrain")),

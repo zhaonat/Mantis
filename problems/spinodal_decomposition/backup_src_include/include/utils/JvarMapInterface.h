@@ -17,7 +17,7 @@ template <class T>
 class JvarMapInterface : public T
 {
 public:
-  JvarMapInterface(const std::string & name, InputParameters parameters);
+  JvarMapInterface(const InputParameters & parameters);
 
   /// Set the cvar value to the mapped jvar value and return true if the mapping exists.
   /// Otherwise return false
@@ -30,7 +30,7 @@ private:
 
 
 template<class T>
-JvarMapInterface<T>::JvarMapInterface(const std::string & name, InputParameters parameters) :
+JvarMapInterface<T>::JvarMapInterface(const InputParameters & parameters) :
     T(name, parameters),
     _jvar_map(this->_fe_problem.getNonlinearSystem().nVariables(), -1)
 {

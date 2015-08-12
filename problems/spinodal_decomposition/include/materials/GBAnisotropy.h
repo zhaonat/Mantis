@@ -23,8 +23,7 @@ InputParameters validParams<GBAnisotropy>();
 class GBAnisotropy : public Material
 {
 public:
-  GBAnisotropy(const std::string & name,
-               InputParameters parameters);
+  GBAnisotropy(const InputParameters & parameters);
 
 protected:
   virtual void computeProperties();

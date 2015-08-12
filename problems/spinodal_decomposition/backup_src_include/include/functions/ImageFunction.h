@@ -59,7 +59,7 @@ public:
    * @param name
    * @param parameters
    */
-  ImageFunction(const std::string & name, InputParameters parameters);
+  ImageFunction(const InputParameters & parameters);
 
   /**
    * Class destructor

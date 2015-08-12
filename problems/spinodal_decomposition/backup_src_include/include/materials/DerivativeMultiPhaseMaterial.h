@@ -22,8 +22,7 @@ InputParameters validParams<DerivativeMultiPhaseMaterial>();
 class DerivativeMultiPhaseMaterial : public DerivativeMultiPhaseBase
 {
 public:
-  DerivativeMultiPhaseMaterial(const std::string & name,
-                               InputParameters parameters);
+  DerivativeMultiPhaseMaterial(const InputParameters & parameters);
 
 protected:
   virtual Real computeDF(unsigned int);

@@ -46,8 +46,8 @@ InputParameters validParams<LayerGrooveIC>()
   return params;
 }
 
-LayerGrooveIC::LayerGrooveIC(const std::string & name, InputParameters parameters) :
-  InitialCondition(name, parameters),
+LayerGrooveIC::LayerGrooveIC(const InputParameters & parameters) :
+  InitialCondition(parameters),
   _x1(getParam<Real>("x1")),
   _y1(getParam<Real>("y1")),
   _z1(getParam<Real>("z1")),

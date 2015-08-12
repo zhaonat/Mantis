@@ -23,7 +23,7 @@ InputParameters validParams<TestEBSDAux>();
 class TestEBSDAux : public AuxKernel, EBSDAccessFunctors
 {
 public:
-  TestEBSDAux(const std::string & name, InputParameters parameters);
+  TestEBSDAux(const InputParameters & parameters);
 
 protected:
   virtual Real computeValue();

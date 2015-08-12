@@ -24,7 +24,7 @@ class ReconVarIC : public InitialCondition
 {
 public:
 
-  ReconVarIC(const std::string & name, InputParameters parameters);
+  ReconVarIC(const InputParameters & parameters);
 
   virtual void initialSetup();
   virtual Real value(const Point & /*p*/);

@@ -12,7 +12,7 @@
 class PolycrystalKernelAction: public Action
 {
 public:
-  PolycrystalKernelAction(const std::string & name, InputParameters params);
+  PolycrystalKernelAction(const InputParameters & params);
 
   virtual void act();
 

@@ -23,7 +23,7 @@ InputParameters validParams<MultiBarrierFunctionMaterial>();
 class MultiBarrierFunctionMaterial : public DerivativeMaterialInterface<Material>
 {
 public:
-  MultiBarrierFunctionMaterial(const std::string & name, InputParameters parameters);
+  MultiBarrierFunctionMaterial(const InputParameters & parameters);
 
 protected:
   virtual void computeQpProperties();

@@ -18,8 +18,8 @@ InputParameters validParams<NodalVolumeFraction>()
   return params;
 }
 
-NodalVolumeFraction::NodalVolumeFraction(const std::string & name, InputParameters parameters) :
-    FeatureFloodCount(name, parameters),
+NodalVolumeFraction::NodalVolumeFraction(const InputParameters & parameters) :
+    FeatureFloodCount(parameters),
     _mesh_volume(getPostprocessorValue("mesh_volume")),
     _equil_fraction(getParam<Real>("equil_fraction"))
 {

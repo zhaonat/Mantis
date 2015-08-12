@@ -15,9 +15,8 @@ InputParameters validParams<LangevinNoise>()
   params.addParam<std::string>("multiplier", "Material property to multiply the random numbers with (defaults to 1.0 if omitted)");
   return params;
 }
-LangevinNoise::LangevinNoise(const std::string & name,
-                             InputParameters parameters) :
-    Kernel(name, parameters),
+LangevinNoise::LangevinNoise(const InputParameters & parameters) :
+    Kernel(parameters),
     _amplitude(getParam<Real>("amplitude")),
     _multiplier_prop(parameters.isParamValid("multiplier") ? &getMaterialProperty<Real>(getParam<std::string>("multiplier")) : NULL)
 {

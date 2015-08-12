@@ -50,8 +50,8 @@ InputParameters validParams<LayerTwoDefectIC>()
 }
 
 /* parameter order here must match the order in which you listed them in the header file (.h)! */
-LayerTwoDefectIC::LayerTwoDefectIC(const std::string & name, InputParameters parameters) :
-  InitialCondition(name, parameters),
+LayerTwoDefectIC::LayerTwoDefectIC(const InputParameters & parameters) :
+  InitialCondition(parameters),
   _x1(getParam<Real>("x1")),
   _y1(getParam<Real>("y1")),
   _z1(getParam<Real>("z1")),

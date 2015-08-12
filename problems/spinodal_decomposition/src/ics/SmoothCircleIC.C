@@ -19,9 +19,8 @@ InputParameters validParams<SmoothCircleIC>()
   return params;
 }
 
-SmoothCircleIC::SmoothCircleIC(const std::string & name,
-                               InputParameters parameters) :
-    SmoothCircleBaseIC(name, parameters),
+SmoothCircleIC::SmoothCircleIC(const InputParameters & parameters) :
+    SmoothCircleBaseIC(parameters),
     _x1(parameters.get<Real>("x1")),
     _y1(parameters.get<Real>("y1")),
     _z1(parameters.get<Real>("z1")),

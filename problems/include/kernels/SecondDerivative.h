@@ -20,7 +20,7 @@ InputParameters validParams<SecondDerivative>();
 class SecondDerivative : public TimeKernel
 {
 public:
-  SecondDerivative(const std::string & name, InputParameters parameters);
+  SecondDerivative(const InputParameters & parameters);
 
 protected:
   virtual Real computeQpResidual();

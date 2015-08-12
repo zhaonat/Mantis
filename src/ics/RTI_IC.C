@@ -43,8 +43,8 @@ InputParameters validParams<RTI_IC>()
   return params;
 }
 
-RTI_IC::RTI_IC(const std::string & name, InputParameters parameters) :
-  InitialCondition(name, parameters),
+RTI_IC::RTI_IC(const InputParameters & parameters) :
+  InitialCondition(parameters),
   _x1(getParam<Real>("x1")),
   _y1(getParam<Real>("y1")),
   _z1(getParam<Real>("z1")),

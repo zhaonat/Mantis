@@ -13,9 +13,8 @@ InputParameters validParams<PolynomialFreeEnergy>()
   return params;
 }
 
-PolynomialFreeEnergy::PolynomialFreeEnergy(const std::string & name,
-                                           InputParameters parameters) :
-    DerivativeParsedMaterialHelper(name, parameters),
+PolynomialFreeEnergy::PolynomialFreeEnergy(const InputParameters & parameters) :
+    DerivativeParsedMaterialHelper(parameters),
     _c("c"),
     _a_name(getParam<std::string>("c_eq_name")),
     _W_name(getParam<std::string>("W_name")),

@@ -23,7 +23,7 @@ InputParameters validParams<DerivativeFunctionMaterialBase>();
 class ElasticEnergyMaterial : public DerivativeFunctionMaterialBase
 {
 public:
-  ElasticEnergyMaterial(const std::string & name, InputParameters parameters);
+  ElasticEnergyMaterial(const InputParameters & parameters);
 
 protected:
   virtual Real computeF();

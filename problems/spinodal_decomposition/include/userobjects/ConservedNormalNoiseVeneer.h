@@ -13,7 +13,7 @@ template<class T>
 class ConservedNormalNoiseVeneer : public T
 {
 public:
-  ConservedNormalNoiseVeneer(const std::string & name, InputParameters parameters);
+  ConservedNormalNoiseVeneer(const InputParameters & parameters);
 
 protected:
   Real getQpRandom();
@@ -25,7 +25,7 @@ private:
 
 
 template<class T>
-ConservedNormalNoiseVeneer<T>::ConservedNormalNoiseVeneer(const std::string & name, InputParameters parameters) :
+ConservedNormalNoiseVeneer<T>::ConservedNormalNoiseVeneer(const InputParameters & parameters) :
     T(name, parameters),
     _phase(0),
     _Z2(0)

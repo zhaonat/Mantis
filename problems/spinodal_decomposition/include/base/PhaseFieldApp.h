@@ -17,7 +17,7 @@ InputParameters validParams<PhaseFieldApp>();
 class PhaseFieldApp : public MooseApp
 {
 public:
-  PhaseFieldApp(const std::string & name, InputParameters parameters);
+  PhaseFieldApp(InputParameters parameters);
   virtual ~PhaseFieldApp();
 
   static void registerApps();

@@ -17,8 +17,8 @@ InputParameters validParams<MultiBarrierFunctionMaterial>()
   return params;
 }
 
-MultiBarrierFunctionMaterial::MultiBarrierFunctionMaterial(const std::string & name, InputParameters parameters) :
-    DerivativeMaterialInterface<Material>(name, parameters),
+MultiBarrierFunctionMaterial::MultiBarrierFunctionMaterial(const InputParameters & parameters) :
+    DerivativeMaterialInterface<Material>(parameters),
     _function_name(getParam<std::string>("function_name")),
     _g_order(getParam<MooseEnum>("g_order")),
     _num_eta(coupledComponents("etas")),

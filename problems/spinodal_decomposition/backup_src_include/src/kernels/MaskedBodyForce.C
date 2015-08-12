@@ -16,8 +16,8 @@ InputParameters validParams<MaskedBodyForce>()
   return params;
 }
 
-MaskedBodyForce::MaskedBodyForce(const std::string & name, InputParameters parameters) :
-    BodyForce(name, parameters),
+MaskedBodyForce::MaskedBodyForce(const InputParameters & parameters) :
+    BodyForce(parameters),
     _mask_property_name(getParam<std::string>("mask")),
     _mask(getMaterialProperty<Real>(_mask_property_name))
 {

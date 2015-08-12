@@ -25,7 +25,7 @@ InputParameters validParams<CHParsed>();
 class CHParsed : public DerivativeKernelInterface<JvarMapInterface<CHBulk> >
 {
 public:
-  CHParsed(const std::string & name, InputParameters parameters);
+  CHParsed(const InputParameters & parameters);
 
 protected:
   virtual RealGradient computeGradDFDCons(PFFunctionType type);

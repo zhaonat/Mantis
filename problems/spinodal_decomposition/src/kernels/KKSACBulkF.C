@@ -16,8 +16,8 @@ InputParameters validParams<KKSACBulkF>()
   return params;
 }
 
-KKSACBulkF::KKSACBulkF(const std::string & name, InputParameters parameters) :
-    KKSACBulkBase(name, parameters),
+KKSACBulkF::KKSACBulkF(const InputParameters & parameters) :
+    KKSACBulkBase(parameters),
     _w(getParam<Real>("w")),
     _g_name(getParam<std::string>("g_name")),
     _prop_dg(getMaterialPropertyDerivative<Real>(_g_name, _eta_name)),

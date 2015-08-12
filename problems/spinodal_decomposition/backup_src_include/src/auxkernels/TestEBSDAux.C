@@ -16,8 +16,8 @@ InputParameters validParams<TestEBSDAux>()
   return params;
 }
 
-TestEBSDAux::TestEBSDAux(const std::string & name, InputParameters parameters) :
-    AuxKernel(name, parameters),
+TestEBSDAux::TestEBSDAux(const InputParameters & parameters) :
+    AuxKernel(parameters),
     _ebsd_reader(getUserObject<EBSDReader>("ebsd_reader")),
     _data_name(getParam<MooseEnum>("data_name")),
     _val(getPointDataAccessFunctor(_data_name))

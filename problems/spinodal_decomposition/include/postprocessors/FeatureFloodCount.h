@@ -43,7 +43,7 @@ class FeatureFloodCount :
   public ZeroInterface
 {
 public:
-  FeatureFloodCount(const std::string & name, InputParameters parameters);
+  FeatureFloodCount(const InputParameters & parameters);
   ~FeatureFloodCount();
 
   virtual void initialize();

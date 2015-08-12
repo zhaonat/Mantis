@@ -25,9 +25,8 @@ InputParameters validParams<DerivativeMultiPhaseBase>()
   return params;
 }
 
-DerivativeMultiPhaseBase::DerivativeMultiPhaseBase(const std::string & name,
-                                                       InputParameters parameters) :
-    DerivativeFunctionMaterialBase(name, parameters),
+DerivativeMultiPhaseBase::DerivativeMultiPhaseBase(const InputParameters & parameters) :
+    DerivativeFunctionMaterialBase(parameters),
     _eta_index(_nargs, -1),
     _num_etas(coupledComponents("etas")),
     _eta_names(_num_etas),

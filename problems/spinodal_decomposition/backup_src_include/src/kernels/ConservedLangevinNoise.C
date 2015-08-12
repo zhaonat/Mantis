@@ -13,9 +13,8 @@ InputParameters validParams<ConservedLangevinNoise>()
   params.addRequiredParam<UserObjectName>("noise", "ConservativeNoise userobject that produces the random numbers");
   return params;
 }
-ConservedLangevinNoise::ConservedLangevinNoise(const std::string & name,
-                             InputParameters parameters) :
-    LangevinNoise(name, parameters),
+ConservedLangevinNoise::ConservedLangevinNoise(const InputParameters & parameters) :
+    LangevinNoise(parameters),
     _noise(getUserObject<ConservedNoiseInterface>("noise"))
 {
 }

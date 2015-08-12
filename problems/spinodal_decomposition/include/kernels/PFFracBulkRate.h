@@ -24,7 +24,7 @@ class PFFracBulkRate : public KernelValue
 {
 public:
 
-  PFFracBulkRate(const std::string & name, InputParameters parameters);
+  PFFracBulkRate(const InputParameters & parameters);
 
 protected:
 

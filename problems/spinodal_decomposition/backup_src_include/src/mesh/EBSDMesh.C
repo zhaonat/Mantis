@@ -29,8 +29,8 @@ InputParameters validParams<EBSDMesh>()
   return params;
 }
 
-EBSDMesh::EBSDMesh(const std::string & name, InputParameters parameters) :
-    GeneratedMesh(name, parameters),
+EBSDMesh::EBSDMesh(const InputParameters & parameters) :
+    GeneratedMesh(parameters),
     _filename(getParam<FileName>("filename"))
 {
   if (_nx != 1 || _ny != 1 || _nz !=1)

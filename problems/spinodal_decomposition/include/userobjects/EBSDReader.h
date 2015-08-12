@@ -22,7 +22,7 @@ InputParameters validParams<EBSDReader>();
 class EBSDReader : public GeneralUserObject, public EBSDAccessFunctors
 {
 public:
-  EBSDReader(const std::string & name, InputParameters params);
+  EBSDReader(const InputParameters & params);
   virtual ~EBSDReader();
 
   virtual void initialSetup();

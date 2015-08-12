@@ -40,8 +40,8 @@ InputParameters validParams<BicrystalBoundingBoxICAction>()
   return params;
 }
 
-BicrystalBoundingBoxICAction::BicrystalBoundingBoxICAction(const std::string & name, InputParameters params) :
-    Action(name, params),
+BicrystalBoundingBoxICAction::BicrystalBoundingBoxICAction(const InputParameters & params) :
+    Action(params),
     _var_name_base(getParam<std::string>("var_name_base")),
     _op_num(getParam<unsigned int>("op_num")),
     _x1(getParam<Real>("x1")),

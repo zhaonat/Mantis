@@ -14,8 +14,8 @@ InputParameters validParams<SplitCHWRes>()
   return params;
 }
 
-SplitCHWRes::SplitCHWRes(const std::string & name, InputParameters parameters) :
-    DerivativeMaterialInterface<JvarMapInterface<Kernel> >(name, parameters),
+SplitCHWRes::SplitCHWRes(const InputParameters & parameters) :
+    DerivativeMaterialInterface<JvarMapInterface<Kernel> >(parameters),
     _mob_name(getParam<std::string>("mob_name")),
     _mob(getMaterialProperty<Real>(_mob_name))
 {

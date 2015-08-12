@@ -18,8 +18,8 @@ InputParameters validParams<KKSGlobalFreeEnergy>()
   return params;
 }
 
-KKSGlobalFreeEnergy::KKSGlobalFreeEnergy(const std::string & name, InputParameters parameters) :
-    AuxKernel(name, parameters),
+KKSGlobalFreeEnergy::KKSGlobalFreeEnergy(const InputParameters & parameters) :
+    AuxKernel(parameters),
     _prop_fa(getMaterialProperty<Real>(getParam<std::string>("fa_name"))),
     _prop_fb(getMaterialProperty<Real>(getParam<std::string>("fb_name"))),
     _prop_h(getMaterialProperty<Real>(getParam<std::string>("h_name"))),

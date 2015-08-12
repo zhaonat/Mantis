@@ -19,8 +19,8 @@ InputParameters validParams<KKSPhaseConcentration>()
 }
 
 // Phase interpolation func
-KKSPhaseConcentration::KKSPhaseConcentration(const std::string & name, InputParameters parameters) :
-    DerivativeMaterialInterface<Kernel>(name, parameters),
+KKSPhaseConcentration::KKSPhaseConcentration(const InputParameters & parameters) :
+    DerivativeMaterialInterface<Kernel>(parameters),
     _ca(coupledValue("ca")),
     _ca_var(coupled("ca")),
     _c(coupledValue("c")),

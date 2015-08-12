@@ -29,7 +29,7 @@ class KKSACBulkBase : public DerivativeMaterialInterface<
                          > >
 {
 public:
-  KKSACBulkBase(const std::string & name, InputParameters parameters);
+  KKSACBulkBase(const InputParameters & parameters);
 
 protected:
   /// Number of coupled variables

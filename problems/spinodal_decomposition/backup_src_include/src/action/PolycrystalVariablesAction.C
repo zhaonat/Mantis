@@ -35,8 +35,8 @@ InputParameters validParams<PolycrystalVariablesAction>()
   return params;
 }
 
-PolycrystalVariablesAction::PolycrystalVariablesAction(const std::string & name, InputParameters params) :
-    Action(name, params),
+PolycrystalVariablesAction::PolycrystalVariablesAction(const InputParameters & params) :
+    Action(params),
     _op_num(getParam<unsigned int>("op_num")),
     _var_name_base(getParam<std::string>("var_name_base"))
 {

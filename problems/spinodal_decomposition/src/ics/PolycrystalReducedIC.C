@@ -25,9 +25,8 @@ InputParameters validParams<PolycrystalReducedIC>()
   return params;
 }
 
-PolycrystalReducedIC::PolycrystalReducedIC(const std::string & name,
-                                           InputParameters parameters) :
-    InitialCondition(name, parameters),
+PolycrystalReducedIC::PolycrystalReducedIC(const InputParameters & parameters) :
+    InitialCondition(parameters),
     _mesh(_fe_problem.mesh()),
     _nl(_fe_problem.getNonlinearSystem()),
     _op_num(getParam<unsigned int>("op_num")),

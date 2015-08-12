@@ -23,7 +23,7 @@ InputParameters validParams<KKSGlobalFreeEnergy>();
 class KKSGlobalFreeEnergy : public AuxKernel
 {
 public:
-  KKSGlobalFreeEnergy(const std::string & name, InputParameters parameters);
+  KKSGlobalFreeEnergy(const InputParameters & parameters);
 
 protected:
   virtual Real computeValue();

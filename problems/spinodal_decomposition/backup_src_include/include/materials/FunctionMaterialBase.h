@@ -23,7 +23,7 @@ InputParameters validParams<FunctionMaterialBase>();
 class FunctionMaterialBase : public DerivativeMaterialInterface<Material>
 {
 public:
-  FunctionMaterialBase(const std::string & name, InputParameters parameters);
+  FunctionMaterialBase(const InputParameters & parameters);
 
 protected:
 

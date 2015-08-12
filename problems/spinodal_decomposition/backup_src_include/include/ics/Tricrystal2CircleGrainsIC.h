@@ -32,8 +32,7 @@ public:
    * @param parameters The parameters object holding data for the class to use.
    * @param var_name The variable this InitialCondtion is supposed to provide values for.
    */
-  Tricrystal2CircleGrainsIC(const std::string & name,
-                InputParameters parameters);
+  Tricrystal2CircleGrainsIC(const InputParameters & parameters);
 
   /**
    * The value of the variable at a point.

@@ -14,8 +14,8 @@ InputParameters validParams<CHParsed>()
   return params;
 }
 
-CHParsed::CHParsed(const std::string & name, InputParameters parameters) :
-    DerivativeKernelInterface<JvarMapInterface<CHBulk> >(name, parameters),
+CHParsed::CHParsed(const InputParameters & parameters) :
+    DerivativeKernelInterface<JvarMapInterface<CHBulk> >(parameters),
     _second_derivatives(_nvar+1),
     _third_derivatives(_nvar+1),
     _third_cross_derivatives(_nvar),

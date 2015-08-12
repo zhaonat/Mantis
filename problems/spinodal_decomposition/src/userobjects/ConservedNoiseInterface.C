@@ -6,8 +6,8 @@
 /****************************************************************/
 #include "ConservedNoiseInterface.h"
 
-ConservedNoiseInterface::ConservedNoiseInterface(const std::string & name, InputParameters parameters) :
-    ElementUserObject(name, parameters),
+ConservedNoiseInterface::ConservedNoiseInterface(const InputParameters & parameters) :
+    ElementUserObject(parameters),
     _integral(0),
     _volume(0),
     _qp(0)

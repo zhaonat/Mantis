@@ -34,8 +34,8 @@ InputParameters validParams<PolycrystalRandomICAction>()
   return params;
 }
 
-PolycrystalRandomICAction::PolycrystalRandomICAction(const std::string & name, InputParameters params) :
-    Action(name, params),
+PolycrystalRandomICAction::PolycrystalRandomICAction(const InputParameters & params) :
+    Action(params),
     _op_num(getParam<unsigned int>("op_num")),
     _var_name_base(getParam<std::string>("var_name_base")),
     _random_type(getParam<MooseEnum>("random_type"))

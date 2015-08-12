@@ -35,7 +35,7 @@ class ExpFunction :
   public MooseVariableInterface
 {
 public:
-  ExpFunction(const std::string & name, InputParameters parameters);
+  ExpFunction(const InputParameters & parameters);
 
 protected:
   virtual Real computeQpIntegral();

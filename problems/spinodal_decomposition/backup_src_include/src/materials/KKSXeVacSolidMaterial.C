@@ -17,9 +17,8 @@ InputParameters validParams<KKSXeVacSolidMaterial>()
   return params;
 }
 
-KKSXeVacSolidMaterial::KKSXeVacSolidMaterial(const std::string & name,
-                                             InputParameters parameters) :
-    DerivativeFunctionMaterialBase(name, parameters),
+KKSXeVacSolidMaterial::KKSXeVacSolidMaterial(const InputParameters & parameters) :
+    DerivativeFunctionMaterialBase(parameters),
     _T(getParam<Real>("T")),
     _Omega(2.53),
     _kB(8.6173324e-5),

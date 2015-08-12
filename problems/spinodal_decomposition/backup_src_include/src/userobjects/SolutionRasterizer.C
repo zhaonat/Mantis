@@ -20,8 +20,8 @@ InputParameters validParams<SolutionRasterizer>()
   return params;
 }
 
-SolutionRasterizer::SolutionRasterizer(const std::string & name, InputParameters parameters) :
-    SolutionUserObject(name, parameters),
+SolutionRasterizer::SolutionRasterizer(const InputParameters & parameters) :
+    SolutionUserObject(parameters),
     _xyz_input(getParam<FileName>("xyz_input")),
     _xyz_output(getParam<FileName>("xyz_output")),
     _variable(getParam<std::string>("variable")),

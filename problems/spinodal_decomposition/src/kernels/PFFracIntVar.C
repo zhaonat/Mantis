@@ -13,9 +13,8 @@ InputParameters validParams<PFFracIntVar>()
   return params;
 }
 
-PFFracIntVar::PFFracIntVar(const std::string & name,
-                           InputParameters parameters):
-  KernelValue(name, parameters)
+PFFracIntVar::PFFracIntVar(const InputParameters & parameters):
+  KernelValue(parameters)
 {
 }
 

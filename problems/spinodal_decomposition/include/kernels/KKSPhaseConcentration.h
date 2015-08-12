@@ -32,7 +32,7 @@ InputParameters validParams<KKSPhaseConcentration>();
 class KKSPhaseConcentration : public DerivativeMaterialInterface<Kernel>
 {
 public:
-  KKSPhaseConcentration(const std::string & name, InputParameters parameters);
+  KKSPhaseConcentration(const InputParameters & parameters);
 
 protected:
   virtual Real computeQpResidual();

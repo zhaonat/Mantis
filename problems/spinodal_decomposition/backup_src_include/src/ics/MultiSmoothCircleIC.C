@@ -23,9 +23,8 @@ InputParameters validParams<MultiSmoothCircleIC>()
   return params;
 }
 
-MultiSmoothCircleIC::MultiSmoothCircleIC(const std::string & name,
-                                         InputParameters parameters) :
-    SmoothCircleBaseIC(name, parameters),
+MultiSmoothCircleIC::MultiSmoothCircleIC(const InputParameters & parameters) :
+    SmoothCircleBaseIC(parameters),
     _numbub(getParam<unsigned int>("numbub")),
     _bubspac(getParam<Real>("bubspac")),
     _numtries(getParam<unsigned int>("numtries")),

@@ -35,7 +35,7 @@ class KKSCHBulk : public DerivativeMaterialInterface<
                          > >
 {
 public:
-  KKSCHBulk(const std::string & name, InputParameters parameters);
+  KKSCHBulk(const InputParameters & parameters);
 
 protected:
   virtual RealGradient computeGradDFDCons(PFFunctionType type);

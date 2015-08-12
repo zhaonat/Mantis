@@ -17,7 +17,7 @@ class PolynomialFreeEnergy : public DerivativeParsedMaterialHelper,
                              public ExpressionBuilder
 {
 public:
-  PolynomialFreeEnergy(const std::string & name, InputParameters parameters);
+  PolynomialFreeEnergy(const InputParameters & parameters);
 
 protected:
   ///Concentration variable used in the free energy expression

@@ -15,9 +15,8 @@ InputParameters validParams<TotalFreeEnergyBase>()
   return params;
 }
 
-TotalFreeEnergyBase::TotalFreeEnergyBase(const std::string & name,
-                                                         InputParameters parameters) :
-    AuxKernel(name, parameters),
+TotalFreeEnergyBase::TotalFreeEnergyBase(const InputParameters & parameters) :
+    AuxKernel(parameters),
     _nvars(coupledComponents("interfacial_vars")),
     _vars(_nvars),
     _grad_vars(_nvars),

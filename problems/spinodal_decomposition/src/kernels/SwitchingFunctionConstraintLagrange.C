@@ -17,8 +17,8 @@ InputParameters validParams<SwitchingFunctionConstraintLagrange>()
   return params;
 }
 
-SwitchingFunctionConstraintLagrange::SwitchingFunctionConstraintLagrange(const std::string & name, InputParameters parameters) :
-    DerivativeMaterialInterface<Kernel>(name, parameters),
+SwitchingFunctionConstraintLagrange::SwitchingFunctionConstraintLagrange(const InputParameters & parameters) :
+    DerivativeMaterialInterface<Kernel>(parameters),
     _h_names(getParam<std::vector<std::string> >("h_names")),
     _num_h(_h_names.size()),
     _h(_num_h),

@@ -17,8 +17,8 @@ InputParameters validParams<ConservedNoiseBase>()
   return params;
 }
 
-ConservedNoiseBase::ConservedNoiseBase(const std::string & name, InputParameters parameters) :
-    ConservedNoiseInterface(name, parameters)
+ConservedNoiseBase::ConservedNoiseBase(const InputParameters & parameters) :
+    ConservedNoiseInterface(parameters)
 {
 }
 

@@ -39,9 +39,8 @@ InputParameters validParams<C1ICBase>()
   return params;
 }
 
-C1ICBase::C1ICBase(const std::string & name,
-                   InputParameters parameters) :
-    InitialCondition(name, parameters),
+C1ICBase::C1ICBase(const InputParameters & parameters) :
+    InitialCondition(parameters),
     _average(parameters.get<Real>("average")),
     _amplitude(parameters.get<Real>("amplitude")),
     _length(parameters.get<Real>("length")),

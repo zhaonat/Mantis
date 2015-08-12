@@ -16,9 +16,8 @@ InputParameters validParams<TestIC1>()
   return params;
 }
 
-TestIC1::TestIC1(const std::string & name,
-                               InputParameters parameters) :
-    InitialCondition(name, parameters),_coefficient(getParam<Real>("coefficient"))
+TestIC1::TestIC1(const InputParameters & parameters) :
+    InitialCondition(parameters),_coefficient(getParam<Real>("coefficient"))
 {
 }
 

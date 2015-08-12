@@ -24,8 +24,7 @@ InputParameters validParams<OrderParameterFunctionMaterial>();
 class OrderParameterFunctionMaterial : public DerivativeMaterialInterface<Material>
 {
 public:
-  OrderParameterFunctionMaterial(const std::string & name,
-                                 InputParameters parameters);
+  OrderParameterFunctionMaterial(const InputParameters & parameters);
 
 protected:
   /// Coupled variable value for the order parameter \f$ \eta \f$.

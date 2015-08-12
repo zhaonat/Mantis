@@ -37,9 +37,8 @@ InputParameters validParams<CrossIC>()
   return params;
 }
 
-CrossIC::CrossIC(const std::string & name,
-                 InputParameters parameters) :
-    C1ICBase(name, parameters),
+CrossIC::CrossIC(const InputParameters & parameters) :
+    C1ICBase(parameters),
     _x1(parameters.get<Real>("x1")),
     _y1(parameters.get<Real>("y1")),
     _x2(parameters.get<Real>("x2")),

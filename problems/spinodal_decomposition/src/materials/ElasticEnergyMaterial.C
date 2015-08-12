@@ -18,9 +18,8 @@ InputParameters validParams<ElasticEnergyMaterial>()
   return params;
 }
 
-ElasticEnergyMaterial::ElasticEnergyMaterial(const std::string & name,
-                                             InputParameters parameters) :
-    DerivativeFunctionMaterialBase(name, parameters),
+ElasticEnergyMaterial::ElasticEnergyMaterial(const InputParameters & parameters) :
+    DerivativeFunctionMaterialBase(parameters),
     _base_name(isParamValid("base_name") ? getParam<std::string>("base_name") + "_" : "" ),
     _stress(getMaterialProperty<RankTwoTensor>(_base_name + "stress")),
     _elasticity_tensor(getMaterialProperty<ElasticityTensorR4>(_base_name + "elasticity_tensor")),

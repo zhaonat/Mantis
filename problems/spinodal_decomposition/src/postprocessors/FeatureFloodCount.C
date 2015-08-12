@@ -44,8 +44,8 @@ InputParameters validParams<FeatureFloodCount>()
   return params;
 }
 
-FeatureFloodCount::FeatureFloodCount(const std::string & name, InputParameters parameters) :
-    GeneralPostprocessor(name, parameters),
+FeatureFloodCount::FeatureFloodCount(const InputParameters & parameters) :
+    GeneralPostprocessor(parameters),
     Coupleable(parameters, false),
     MooseVariableDependencyInterface(),
     ZeroInterface(parameters),

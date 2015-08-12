@@ -16,8 +16,8 @@ InputParameters validParams<SwitchingFunctionConstraintEta>()
   return params;
 }
 
-SwitchingFunctionConstraintEta::SwitchingFunctionConstraintEta(const std::string & name, InputParameters parameters) :
-    DerivativeMaterialInterface<Kernel>(name, parameters),
+SwitchingFunctionConstraintEta::SwitchingFunctionConstraintEta(const InputParameters & parameters) :
+    DerivativeMaterialInterface<Kernel>(parameters),
     _h_name(getParam<std::string>("h_name")),
     _eta_name(_var.name()),
     _dh(getMaterialPropertyDerivative<Real>(_h_name, _eta_name)),

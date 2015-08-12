@@ -43,8 +43,8 @@ InputParameters validParams<MultiBoxIC>()
   return params;
 }
 
-MultiBoxIC::MultiBoxIC(const std::string & name, InputParameters parameters) :
-  InitialCondition(name, parameters),
+MultiBoxIC::MultiBoxIC(const InputParameters & parameters) :
+  InitialCondition(parameters),
   _x1(getParam<Real>("x1")),
   _y1(getParam<Real>("y1")),
   _z1(getParam<Real>("z1")),

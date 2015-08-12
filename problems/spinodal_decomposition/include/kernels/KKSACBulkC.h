@@ -25,7 +25,7 @@ InputParameters validParams<KKSACBulkC>();
 class KKSACBulkC : public KKSACBulkBase
 {
 public:
-  KKSACBulkC(const std::string & name, InputParameters parameters);
+  KKSACBulkC(const InputParameters & parameters);
 
 protected:
   virtual Real computeDFDOP(PFFunctionType type);

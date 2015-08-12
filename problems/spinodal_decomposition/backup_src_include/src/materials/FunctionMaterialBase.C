@@ -15,9 +15,8 @@ InputParameters validParams<FunctionMaterialBase>()
   return params;
 }
 
-FunctionMaterialBase::FunctionMaterialBase(const std::string & name,
-                                               InputParameters parameters) :
-    DerivativeMaterialInterface<Material>(name, parameters),
+FunctionMaterialBase::FunctionMaterialBase(const InputParameters & parameters) :
+    DerivativeMaterialInterface<Material>(parameters),
     _F_name(getParam<std::string>("f_name")),
     _prop_F(&declareProperty<Real>(_F_name)),
     _number_of_nl_variables(_fe_problem.getNonlinearSystem().nVariables()),

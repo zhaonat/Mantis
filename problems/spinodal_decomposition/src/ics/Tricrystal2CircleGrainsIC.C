@@ -17,9 +17,8 @@ InputParameters validParams<Tricrystal2CircleGrainsIC>()
   return params;
 }
 
-Tricrystal2CircleGrainsIC::Tricrystal2CircleGrainsIC(const std::string & name,
-                                                     InputParameters parameters) :
-    InitialCondition(name, parameters),
+Tricrystal2CircleGrainsIC::Tricrystal2CircleGrainsIC(const InputParameters & parameters) :
+    InitialCondition(parameters),
     _mesh(_fe_problem.mesh()),
     _nl(_fe_problem.getNonlinearSystem()),
     _op_num(getParam<unsigned int>("op_num")),

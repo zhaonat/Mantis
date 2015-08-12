@@ -14,9 +14,8 @@ InputParameters validParams<CrossTermGradientFreeEnergy>()
   return params;
 }
 
-CrossTermGradientFreeEnergy::CrossTermGradientFreeEnergy(const std::string & name,
-                                           InputParameters parameters) :
-    TotalFreeEnergyBase(name, parameters),
+CrossTermGradientFreeEnergy::CrossTermGradientFreeEnergy(const InputParameters & parameters) :
+    TotalFreeEnergyBase(parameters),
     _kappas(_nvars)
 {
   //Error check to ensure size of interfacial_vars is the same as kappa_names

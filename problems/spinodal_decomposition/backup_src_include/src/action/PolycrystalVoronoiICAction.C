@@ -38,8 +38,8 @@ InputParameters validParams<PolycrystalVoronoiICAction>()
   return params;
 }
 
-PolycrystalVoronoiICAction::PolycrystalVoronoiICAction(const std::string & name, InputParameters params) :
-    Action(name, params),
+PolycrystalVoronoiICAction::PolycrystalVoronoiICAction(const InputParameters & params) :
+    Action(params),
     _op_num(getParam<unsigned int>("op_num")),
     _grain_num(getParam<unsigned int>("grain_num")),
     _var_name_base(getParam<std::string>("var_name_base"))

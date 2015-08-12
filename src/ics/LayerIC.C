@@ -42,8 +42,8 @@ InputParameters validParams<LayerIC>()
   return params;
 }
 
-LayerIC::LayerIC(const std::string & name, InputParameters parameters) :
-  InitialCondition(name, parameters),
+LayerIC::LayerIC(const InputParameters & parameters) :
+  InitialCondition(parameters),
   _x1(getParam<Real>("x1")),
   _y1(getParam<Real>("y1")),
   _z1(getParam<Real>("z1")),

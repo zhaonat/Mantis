@@ -15,9 +15,8 @@ InputParameters validParams<TotalFreeEnergy>()
   return params;
 }
 
-TotalFreeEnergy::TotalFreeEnergy(const std::string & name,
-                                 InputParameters parameters) :
-    TotalFreeEnergyBase(name, parameters),
+TotalFreeEnergy::TotalFreeEnergy(const InputParameters & parameters) :
+    TotalFreeEnergyBase(parameters),
     _F(getMaterialProperty<Real>(getParam<std::string>("f_name")) ),
     _kappas(_nkappas)
 {

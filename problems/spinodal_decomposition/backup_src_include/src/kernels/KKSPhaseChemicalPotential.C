@@ -22,9 +22,8 @@ InputParameters validParams<KKSPhaseChemicalPotential>()
   return params;
 }
 
-KKSPhaseChemicalPotential::KKSPhaseChemicalPotential(const std::string & name,
-                                                     InputParameters parameters) :
-    DerivativeMaterialInterface<JvarMapInterface<Kernel> >(name, parameters),
+KKSPhaseChemicalPotential::KKSPhaseChemicalPotential(const InputParameters & parameters) :
+    DerivativeMaterialInterface<JvarMapInterface<Kernel> >(parameters),
     _cb_var(coupled("cb")),
     _cb_name(getVar("cb", 0)->name()),
     _Fa_name(getParam<std::string>("fa_name")),

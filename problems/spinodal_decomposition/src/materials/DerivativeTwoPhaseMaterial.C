@@ -30,9 +30,8 @@ InputParameters validParams<DerivativeTwoPhaseMaterial>()
   return params;
 }
 
-DerivativeTwoPhaseMaterial::DerivativeTwoPhaseMaterial(const std::string & name,
-                                                       InputParameters parameters) :
-    DerivativeFunctionMaterialBase(name, parameters),
+DerivativeTwoPhaseMaterial::DerivativeTwoPhaseMaterial(const InputParameters & parameters) :
+    DerivativeFunctionMaterialBase(parameters),
     _eta(coupledValue("eta")),
     _eta_name(getVar("eta", 0)->name()),
     _eta_var(coupled("eta")),

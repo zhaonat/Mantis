@@ -16,8 +16,8 @@ InputParameters validParams<KKSACBulkC>()
   return params;
 }
 
-KKSACBulkC::KKSACBulkC(const std::string & name, InputParameters parameters) :
-    KKSACBulkBase(name, parameters),
+KKSACBulkC::KKSACBulkC(const InputParameters & parameters) :
+    KKSACBulkBase(parameters),
     _ca_name(getVar("ca", 0)->name()),
     _ca_var(coupled("ca")),
     _ca(coupledValue("ca")),

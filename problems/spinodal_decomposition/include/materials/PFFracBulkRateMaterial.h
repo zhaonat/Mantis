@@ -24,8 +24,7 @@ InputParameters validParams<PFFracBulkRateMaterial>();
 class PFFracBulkRateMaterial : public Material
 {
 public:
-  PFFracBulkRateMaterial(const std::string & name,
-                        InputParameters parameters);
+  PFFracBulkRateMaterial(const InputParameters & parameters);
 
 protected:
   virtual void initQpStatefulProperties();

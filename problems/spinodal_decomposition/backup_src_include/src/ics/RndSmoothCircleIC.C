@@ -18,9 +18,8 @@ InputParameters validParams<RndSmoothCircleIC>()
   return params;
 }
 
-RndSmoothCircleIC::RndSmoothCircleIC(const std::string & name,
-                                     InputParameters parameters) :
-    SmoothCircleIC(name, parameters),
+RndSmoothCircleIC::RndSmoothCircleIC(const InputParameters & parameters) :
+    SmoothCircleIC(parameters),
     _variation_invalue(parameters.get<Real>("variation_invalue")),
     _variation_outvalue(parameters.get<Real>("variation_outvalue"))
 {

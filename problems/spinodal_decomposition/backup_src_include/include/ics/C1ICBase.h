@@ -50,8 +50,7 @@ public:
    * @param parameters The parameters object holding data for the class to use.
    * @param var_name The variable this InitialCondtion is supposed to provide values for.
    */
-  C1ICBase(const std::string & name,
-           InputParameters parameters);
+  C1ICBase(const InputParameters & parameters);
 
 protected:
   Real _average;

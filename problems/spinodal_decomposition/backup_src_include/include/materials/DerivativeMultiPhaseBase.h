@@ -24,8 +24,7 @@ InputParameters validParams<DerivativeMultiPhaseBase>();
 class DerivativeMultiPhaseBase : public DerivativeFunctionMaterialBase
 {
 public:
-  DerivativeMultiPhaseBase(const std::string & name,
-                             InputParameters parameters);
+  DerivativeMultiPhaseBase(const InputParameters & parameters);
 
 protected:
   virtual Real computeF();

@@ -17,8 +17,8 @@ InputParameters validParams<ClosePackIC>()
   return params;
 }
 
-ClosePackIC::ClosePackIC(const std::string & name, InputParameters parameters) :
-    SmoothCircleBaseIC(name, parameters),
+ClosePackIC::ClosePackIC(const InputParameters & parameters) :
+    SmoothCircleBaseIC(parameters),
     _radius(parameters.get<Real>("radius"))
 {
 }

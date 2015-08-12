@@ -23,9 +23,8 @@ InputParameters validParams<LatticeSmoothCircleIC>()
   return params;
 }
 
-LatticeSmoothCircleIC::LatticeSmoothCircleIC(const std::string & name,
-                                             InputParameters parameters) :
-    SmoothCircleBaseIC(name, parameters),
+LatticeSmoothCircleIC::LatticeSmoothCircleIC(const InputParameters & parameters) :
+    SmoothCircleBaseIC(parameters),
     _lattice_variation(getParam<Real>("Rnd_variation")),
     _circles_per_side(getParam<std::vector<unsigned int> >("circles_per_side")),
     _radius(getParam<Real>("radius")),

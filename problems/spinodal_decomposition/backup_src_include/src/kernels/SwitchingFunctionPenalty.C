@@ -17,8 +17,8 @@ InputParameters validParams<SwitchingFunctionPenalty>()
   return params;
 }
 
-SwitchingFunctionPenalty::SwitchingFunctionPenalty(const std::string & name, InputParameters parameters) :
-    DerivativeMaterialInterface<Kernel>(name, parameters),
+SwitchingFunctionPenalty::SwitchingFunctionPenalty(const InputParameters & parameters) :
+    DerivativeMaterialInterface<Kernel>(parameters),
     _h_names(getParam<std::vector<std::string> >("h_names")),
     _num_h(_h_names.size()),
     _h(_num_h),

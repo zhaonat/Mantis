@@ -32,8 +32,8 @@ InputParameters validParams<Tricrystal2CircleGrainsICAction>()
   return params;
 }
 
-Tricrystal2CircleGrainsICAction::Tricrystal2CircleGrainsICAction(const std::string & name, InputParameters params) :
-    Action(name, params),
+Tricrystal2CircleGrainsICAction::Tricrystal2CircleGrainsICAction(const InputParameters & params) :
+    Action(params),
     _var_name_base(getParam<std::string>("var_name_base")),
     _op_num(getParam<unsigned int>("op_num"))
 {}

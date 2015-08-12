@@ -32,7 +32,7 @@ InputParameters validParams<KKSSplitCHCRes>();
 class KKSSplitCHCRes : public DerivativeMaterialInterface<SplitCHBase>
 {
 public:
-  KKSSplitCHCRes(const std::string & name, InputParameters parameters);
+  KKSSplitCHCRes(const InputParameters & parameters);
 
 protected:
   virtual Real computeDFDC(PFFunctionType type);

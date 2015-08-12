@@ -24,8 +24,7 @@ class MathEBFreeEnergy : public DerivativeParsedMaterialHelper,
                          public ExpressionBuilder
 {
 public:
-  MathEBFreeEnergy(const std::string & name,
-                   InputParameters parameters);
+  MathEBFreeEnergy(const InputParameters & parameters);
 
 protected:
 

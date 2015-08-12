@@ -27,7 +27,7 @@ InputParameters validParams<ACMultiInterface>();
 class ACMultiInterface : public Kernel
 {
 public:
-  ACMultiInterface(const std::string & name, InputParameters parameters);
+  ACMultiInterface(const InputParameters & parameters);
 
 protected:
   virtual Real computeQpResidual();

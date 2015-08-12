@@ -23,7 +23,7 @@ InputParameters validParams<CHInterface>();
 class CHInterface : public Kernel
 {
 public:
-  CHInterface(const std::string & name, InputParameters parameters);
+  CHInterface(const InputParameters & parameters);
 
 protected:
   virtual Real computeQpResidual();

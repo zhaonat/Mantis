@@ -15,9 +15,8 @@ InputParameters validParams<LinearIsoElasticPFDamage>()
   return params;
 }
 
-LinearIsoElasticPFDamage::LinearIsoElasticPFDamage(const std::string & name,
-                                             InputParameters parameters) :
-  LinearElasticMaterial(name, parameters),
+LinearIsoElasticPFDamage::LinearIsoElasticPFDamage(const InputParameters & parameters) :
+  LinearElasticMaterial(parameters),
   _c(coupledValue("c")),
   _kdamage(getParam<Real>("kdamage")),
   _dstress_dc(declareProperty<RankTwoTensor>("dstress_dc")),

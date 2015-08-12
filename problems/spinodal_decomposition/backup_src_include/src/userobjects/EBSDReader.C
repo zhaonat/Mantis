@@ -16,8 +16,8 @@ InputParameters validParams<EBSDReader>()
   return params;
 }
 
-EBSDReader::EBSDReader(const std::string & name, InputParameters params) :
-    GeneralUserObject(name, params),
+EBSDReader::EBSDReader(const InputParameters & params) :
+    GeneralUserObject(params),
     _mesh(_fe_problem.mesh()),
     _nl(_fe_problem.getNonlinearSystem()),
     _op_num(getParam<unsigned int>("op_num")),

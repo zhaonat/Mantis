@@ -20,8 +20,8 @@ InputParameters validParams<FeatureFloodCountAux>()
   return params;
 }
 
-FeatureFloodCountAux::FeatureFloodCountAux(const std::string & name, InputParameters parameters) :
-    AuxKernel(name, parameters),
+FeatureFloodCountAux::FeatureFloodCountAux(const InputParameters & parameters) :
+    AuxKernel(parameters),
     _flood_counter(getUserObject<FeatureFloodCount>("bubble_object")),
     _var_idx(getParam<unsigned int>("map_index")),
     _field_display(getParam<MooseEnum>("field_display")),

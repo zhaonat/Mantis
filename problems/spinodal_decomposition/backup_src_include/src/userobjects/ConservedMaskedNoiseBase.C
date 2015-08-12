@@ -18,8 +18,8 @@ InputParameters validParams<ConservedMaskedNoiseBase>()
   return params;
 }
 
-ConservedMaskedNoiseBase::ConservedMaskedNoiseBase(const std::string & name, InputParameters parameters) :
-    ConservedNoiseInterface(name, parameters),
+ConservedMaskedNoiseBase::ConservedMaskedNoiseBase(const InputParameters & parameters) :
+    ConservedNoiseInterface(parameters),
     _mask_property_name(getParam<std::string>("mask")),
     _mask(getMaterialProperty<Real>(_mask_property_name))
 {

@@ -18,9 +18,8 @@ InputParameters validParams<SmoothCircleBaseIC>()
   return params;
 }
 
-SmoothCircleBaseIC::SmoothCircleBaseIC(const std::string & name,
-                               InputParameters parameters) :
-    InitialCondition(name, parameters),
+SmoothCircleBaseIC::SmoothCircleBaseIC(const InputParameters & parameters) :
+    InitialCondition(parameters),
     _mesh(_fe_problem.mesh()),
     _invalue(parameters.get<Real>("invalue")),
     _outvalue(parameters.get<Real>("outvalue")),

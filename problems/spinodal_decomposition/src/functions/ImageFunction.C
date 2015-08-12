@@ -43,8 +43,8 @@ InputParameters validParams<ImageFunction>()
   return params;
 }
 
-ImageFunction::ImageFunction(const std::string & name, InputParameters parameters) :
-    Function(name, parameters)
+ImageFunction::ImageFunction(const InputParameters & parameters) :
+    Function(parameters)
 #ifdef LIBMESH_HAVE_VTK
     ,_data(NULL)
     ,_algorithm(NULL)

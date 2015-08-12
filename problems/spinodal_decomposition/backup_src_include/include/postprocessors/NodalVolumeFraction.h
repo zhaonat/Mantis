@@ -18,7 +18,7 @@ InputParameters validParams<NodalVolumeFraction>();
 class NodalVolumeFraction : public FeatureFloodCount
 {
 public:
-  NodalVolumeFraction(const std::string & name, InputParameters parameters);
+  NodalVolumeFraction(const InputParameters & parameters);
   ~NodalVolumeFraction();
 
   virtual void finalize();

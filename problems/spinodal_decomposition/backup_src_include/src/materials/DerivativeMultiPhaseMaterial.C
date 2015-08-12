@@ -15,9 +15,8 @@ InputParameters validParams<DerivativeMultiPhaseMaterial>()
   return params;
 }
 
-DerivativeMultiPhaseMaterial::DerivativeMultiPhaseMaterial(const std::string & name,
-                                                                               InputParameters parameters) :
-    DerivativeMultiPhaseBase(name, parameters),
+DerivativeMultiPhaseMaterial::DerivativeMultiPhaseMaterial(const InputParameters & parameters) :
+    DerivativeMultiPhaseBase(parameters),
     _dhi(_num_etas),
     _d2hi(_num_etas),
     _d3hi(_num_etas)

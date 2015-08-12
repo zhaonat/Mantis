@@ -20,7 +20,7 @@ InputParameters validParams<ImageMesh>();
 class ImageMesh : public GeneratedMesh
 {
 public:
-  ImageMesh(const std::string & name, InputParameters parameters);
+  ImageMesh(const InputParameters & parameters);
   ImageMesh(const ImageMesh & other_mesh);
   virtual ~ImageMesh();
 

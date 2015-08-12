@@ -15,9 +15,8 @@ InputParameters validParams<MathEBFreeEnergy>()
   return params;
 }
 
-MathEBFreeEnergy::MathEBFreeEnergy(const std::string & name,
-                                   InputParameters parameters) :
-    DerivativeParsedMaterialHelper(name, parameters),
+MathEBFreeEnergy::MathEBFreeEnergy(const InputParameters & parameters) :
+    DerivativeParsedMaterialHelper(parameters),
     _c("c")
 {
   EBFunction free_energy;

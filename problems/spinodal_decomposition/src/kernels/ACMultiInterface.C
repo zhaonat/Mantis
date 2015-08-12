@@ -16,8 +16,8 @@ InputParameters validParams<ACMultiInterface>()
   return params;
 }
 
-ACMultiInterface::ACMultiInterface(const std::string & name, InputParameters parameters) :
-    Kernel(name, parameters),
+ACMultiInterface::ACMultiInterface(const InputParameters & parameters) :
+    Kernel(parameters),
     _num_etas(coupledComponents("etas")),
     _eta(_num_etas),
     _grad_eta(_num_etas),

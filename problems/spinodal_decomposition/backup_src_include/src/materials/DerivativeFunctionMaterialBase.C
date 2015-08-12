@@ -16,9 +16,8 @@ InputParameters validParams<DerivativeFunctionMaterialBase>()
   return params;
 }
 
-DerivativeFunctionMaterialBase::DerivativeFunctionMaterialBase(const std::string & name,
-                                                               InputParameters parameters) :
-    FunctionMaterialBase(name, parameters),
+DerivativeFunctionMaterialBase::DerivativeFunctionMaterialBase(const InputParameters & parameters) :
+    FunctionMaterialBase(parameters),
     _third_derivatives(isParamValid("third_derivatives") ? getParam<bool>("third_derivatives") : (getParam<unsigned int>("derivative_order")==3))
 {
   // loop counters

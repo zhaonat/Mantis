@@ -19,7 +19,7 @@
 class LinearIsoElasticPFDamage : public LinearElasticMaterial
 {
 public:
-  LinearIsoElasticPFDamage(const std:: string & name, InputParameters parameters);
+  LinearIsoElasticPFDamage(const InputParameters & parameters);
 
 protected:
   virtual void computeQpElasticityTensor();

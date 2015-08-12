@@ -40,8 +40,8 @@ InputParameters validParams<BicrystalCircleGrainICAction>()
   return params;
 }
 
-BicrystalCircleGrainICAction::BicrystalCircleGrainICAction(const std::string & name, InputParameters params) :
-    Action(name, params),
+BicrystalCircleGrainICAction::BicrystalCircleGrainICAction(const InputParameters & params) :
+    Action(params),
     _var_name_base(getParam<std::string>("var_name_base")),
     _op_num(getParam<unsigned int>("op_num")),
     _radius(getParam<Real>("radius")),

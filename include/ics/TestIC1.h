@@ -13,8 +13,7 @@ class TestIC1 : public InitialCondition
 
 {
     public:
-    TestIC1(const std::string & name,
-              InputParameters parameters);
+    TestIC1(const InputParameters & parameters);
 
     virtual Real value(const Point & p);
     
